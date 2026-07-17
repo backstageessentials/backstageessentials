@@ -99,9 +99,17 @@
     position: absolute;
     inset: 0;
     background:
-      linear-gradient(to bottom, rgba(10,12,15,0.3) 0%, rgba(10,12,15,0.7) 50%, rgba(10,12,15,0.97) 100%),
-      linear-gradient(135deg, rgba(181,72,31,0.12) 0%, transparent 60%);
-    background-color: var(--ink);
+      linear-gradient(to bottom, rgba(10,12,15,0.2) 0%, rgba(10,12,15,0.6) 50%, rgba(10,12,15,0.97) 100%);
+    z-index: 1;
+  }
+
+  .hero-bg-img {
+    position: absolute;
+    inset: 0;
+    background-image: url('hero-image.webp');
+    background-size: cover;
+    background-position: center 30%;
+    z-index: 0;
   }
 
   /* Simulated stage atmosphere with CSS */
@@ -726,6 +734,140 @@
     flex-shrink: 0;
   }
 
+  /* GALLERY */
+  .photo-gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 8px;
+    margin-bottom: 0;
+  }
+
+  .gallery-large {
+    grid-column: 1;
+    grid-row: 1 / 3;
+  }
+
+  .gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px;
+    background: var(--ink-panel);
+    aspect-ratio: 4/3;
+  }
+
+  .gallery-large {
+    aspect-ratio: unset;
+  }
+
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  .gallery-item:hover img { transform: scale(1.03); }
+
+  .gallery-caption {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 10px 14px;
+    background: linear-gradient(to top, rgba(10,12,15,0.9), transparent);
+    font-family: var(--ff-label);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--grey-light);
+    letter-spacing: 0.04em;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .gallery-item:hover .gallery-caption { opacity: 1; }
+
+  @media (max-width: 768px) {
+    .photo-gallery {
+      grid-template-columns: 1fr 1fr;
+    }
+    .gallery-large {
+      grid-column: 1 / 3;
+      grid-row: 1;
+    }
+  }
+  .credits-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .credit-year-block {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .credit-year-block:last-child { border-bottom: none; }
+
+  .credit-year {
+    font-family: var(--ff-display);
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--rust);
+    padding: 20px 24px;
+    background: var(--ink-panel);
+    border-right: 1px solid var(--rule);
+    display: flex;
+    align-items: flex-start;
+    padding-top: 22px;
+  }
+
+  .credit-list {
+    list-style: none;
+    padding: 12px 0;
+    background: var(--ink-mid);
+  }
+
+  .credit-list li {
+    padding: 10px 24px;
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .credit-list li:last-child { border-bottom: none; }
+
+  .credit-title {
+    font-family: var(--ff-label);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--white);
+  }
+
+  .credit-meta {
+    font-size: 13px;
+    color: var(--grey);
+  }
+
+  .credit-reviews {
+    font-size: 12px;
+    margin-top: 2px;
+  }
+
+  .credit-reviews a {
+    color: var(--rust);
+    text-decoration: none;
+    font-family: var(--ff-label);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+
+  .credit-reviews a:hover { color: var(--rust-light); text-decoration: underline; }
+
   /* CONTACT / FOOTER */
   #contact {
     background: var(--ink);
@@ -857,6 +999,7 @@
 
 <!-- HERO -->
 <section id="home">
+  <div class="hero-bg-img"></div>
   <div class="hero-bg"></div>
   <div class="hero-stage"></div>
   <div class="hero-meters">
@@ -925,35 +1068,47 @@
   <div class="section-inner">
     <div class="about-grid">
       <div class="about-photo">
-        <div class="about-photo-placeholder">👤</div>
-        <div class="about-photo-label">Bill Larsen<br>Author · Educator · Designer</div>
+        <img src="bill-profile.webp" alt="Bill Larsen" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">
       </div>
 
       <div class="about-content">
         <div class="section-label">About Bill</div>
-        <h2 class="section-title">Thirty years<br>in the room.</h2>
-        <p>Started as a stagehand. Now I run AV systems and performance spaces for a school district. <strong>Cable still has to land. Power still has to be safe. The show still has to start on time.</strong></p>
-        <p>I'm the District AV Technology Coordinator at ISD 197 in West St. Paul — the formal title for the work. Before that I spent years in professional production and in education leadership. Different rooms, same problems.</p>
-        <p>I'm also the Education Coordinator for IATSE Local 490. That role exists because the live event industry is short on skilled techs and the K-12 system is full of kids who would be great at this work if anyone showed them the door. My job is to open the door.</p>
-        <p>The book, <strong>Backstage Essentials: Skills for Stagehand Technicians in Live Event Production</strong>, comes out in 2026 from Routledge. A practical guide to the work. Stagecraft fundamentals, crew management, safety, and how to build a program that lasts past the person who started it. Written for the people who actually have to run the show.</p>
+        <h2 class="section-title">Author and<br>Educator.</h2>
+        <p>Bill Larsen has spent thirty years in audiovisual technology and live event production, and <strong>he teaches what he does</strong>. His work runs across the field: designing and running AV systems and performance spaces, lighting and live events, video production, and the kind of training that gets people ready to do real work in a demanding industry.</p>
+        <p>He writes the certification exam that working AV professionals take to prove their craft. As a Subject Matter Expert for AVIXA, Bill helps author the <strong>CTS (Certified Technology Specialist) exam</strong>, the leading credential in the industry. He holds the CTS himself, along with the CETL (Certified Education Technology Leader) and the CIT (Cabling and Infrastructure Technician).</p>
+        <p>His first book, <strong>Backstage Essentials: Skills for Stagehand Technicians in Live Event Production</strong>, is forthcoming from Routledge. A practical guide for the people who actually have to run the show, covering stagecraft fundamentals, crew management, safety, and how to keep a production program running. Written for the new technician on their first call and for the programs trying to train them well.</p>
+        <p>Bill is the District AV Technology Coordinator at ISD 197 in Minnesota, where he runs AV systems and technology infrastructure across the district and has built programs that bring students into the field. He is also the Education Coordinator for IATSE Local 490, developing training that connects working stagehands with the skills the industry expects.</p>
+        <p>Through Backstage Essentials LLC, he develops training and educational resources for live-event technicians.</p>
 
         <div class="cred-grid">
           <div class="cred-cell">
             <div class="cred-cell-label">Certifications</div>
-            <div class="cred-cell-value">CTS (AVIXA) · CETL (CoSN) · CIT (CEDIA)</div>
+            <div class="cred-cell-value">CTS · CETL · CIT · MBA</div>
           </div>
           <div class="cred-cell">
             <div class="cred-cell-label">AVIXA SME</div>
-            <div class="cred-cell-value">CTS exam development · Member USITT, AVIXA, CEDIA</div>
+            <div class="cred-cell-value">CTS exam development</div>
+          </div>
+          <div class="cred-cell">
+            <div class="cred-cell-label">Memberships</div>
+            <div class="cred-cell-value">AVIXA · USITT · CEDIA · CoSN</div>
           </div>
           <div class="cred-cell">
             <div class="cred-cell-label">IATSE Local 490</div>
             <div class="cred-cell-value">Education Coordinator</div>
           </div>
-          <div class="cred-cell">
-            <div class="cred-cell-label">Contact</div>
-            <div class="cred-cell-value">bill@backstageessentials.com</div>
+        </div>
+
+        <div style="margin-top: 40px; border: 1px solid var(--rule); border-radius: 4px; overflow: hidden;">
+          <div style="background: var(--ink-panel); padding: 16px 24px; border-bottom: 1px solid var(--rule);">
+            <div class="cred-cell-label">What Bill works on</div>
           </div>
+          <ul style="list-style: none; margin: 0; padding: 0;">
+            <li style="padding: 14px 24px; border-bottom: 1px solid var(--rule); color: var(--grey-light); font-size: 15px; display: flex; gap: 12px; align-items: flex-start;"><span style="color: var(--rust); margin-top: 2px;">→</span> Authoring and revising practical training resources for live event and AV technicians</li>
+            <li style="padding: 14px 24px; border-bottom: 1px solid var(--rule); color: var(--grey-light); font-size: 15px; display: flex; gap: 12px; align-items: flex-start;"><span style="color: var(--rust); margin-top: 2px;">→</span> Teaching the technical side of AV: installation, AV over IP, and systems integration</li>
+            <li style="padding: 14px 24px; border-bottom: 1px solid var(--rule); color: var(--grey-light); font-size: 15px; display: flex; gap: 12px; align-items: flex-start;"><span style="color: var(--rust); margin-top: 2px;">→</span> Speaking and curriculum development for AV education and workforce training</li>
+            <li style="padding: 14px 24px; color: var(--grey-light); font-size: 15px; display: flex; gap: 12px; align-items: flex-start;"><span style="color: var(--rust); margin-top: 2px;">→</span> Lighting design and live event production</li>
+          </ul>
         </div>
       </div>
     </div>
@@ -966,31 +1121,193 @@
     <div class="section-label">Lighting Design</div>
     <h2 class="section-title">The stage<br>is the brief.</h2>
 
-    <div class="lighting-stage">
-      <div class="windows-bg"></div>
-      <div class="stage-truss"></div>
-      <div class="chandelier">🔆</div>
-      <div class="stage-light stage-light-1"></div>
-      <div class="stage-light stage-light-2"></div>
-      <div class="stage-light stage-light-3"></div>
-      <div class="fixture fixture-1"></div>
-      <div class="fixture fixture-2"></div>
-      <div class="fixture fixture-3"></div>
-      <div class="fixture fixture-4"></div>
-      <div class="fixture fixture-5"></div>
-      <div class="stage-floor"></div>
-      <div class="stage-label">Live event · Large speakers · Decorated venue · Chandelier · Windows to landscape</div>
+    <div class="lighting-stage" style="padding:0;overflow:hidden;">
+      <img src="hero-image.webp" alt="Live event stage setup with truss, line arrays, chandelier and large windows" style="width:100%;height:100%;object-fit:cover;object-position:center 40%;display:block;">
     </div>
 
-    <div class="lighting-bio">
+    <div class="lighting-bio" style="margin-bottom: 64px;">
       <div>
-        <p>Freelance theatrical lighting designer with credits at nine Twin Cities venues since 2016. The work runs from intimate black box productions to large staged events, always with the same question: what does this story need the light to do?</p>
-        <p>Currently pursuing a freelance engagement at <strong>Commonweal Theatre Company</strong> in Lanesboro, Minnesota for <em>Eelpout</em>, opening September 19, 2026.</p>
+        <p>Designing lights for live theatre across the Twin Cities and southeast Minnesota. The work runs from intimate black box productions to full musicals, always with the same question: what does this story need the light to do?</p>
+        <p>I run <strong>ETC Element and Ion consoles</strong>, along with the <strong>Obsidian NX1-16</strong> — the boards you'll find on most live events.</p>
       </div>
       <div>
-        <p>Lighting design at the intersection of live event production and performing arts — two disciplines that share more than they admit. Thirty years of knowing what breaks under pressure and how to make it look intentional when it does.</p>
-        <a href="#contact" class="btn-primary" style="margin-top: 16px; display: inline-block;">Discuss a project</a>
+        <p>Interested in hiring me for your production? Reach out directly.</p>
+        <a href="mailto:bill@backstageessentials.com" class="btn-primary" style="margin-top: 16px; display: inline-block;">bill@backstageessentials.com</a>
       </div>
+    </div>
+
+    <div class="photo-gallery">
+      <div class="gallery-item gallery-large">
+        <img src="bill-action-shot.webp" alt="Bill Larsen at the lighting console during a production">
+        <div class="gallery-caption">At the console</div>
+      </div>
+      <div class="gallery-item">
+        <img src="west-side-story.webp" alt="West Side Story, Inver Grove Community Theatre, 2025">
+        <div class="gallery-caption">West Side Story — Inver Grove Community Theatre, 2025</div>
+      </div>
+      <div class="gallery-item">
+        <img src="img-1783.webp" alt="Production shot">
+        <div class="gallery-caption">Legacy of Light — Theater in the Round, 2025</div>
+      </div>
+      <div class="gallery-item">
+        <img src="img-1775.webp" alt="Production shot">
+        <div class="gallery-caption">Theater in the Round Players</div>
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-top:64px;">Credits</div>
+
+    <div class="credits-grid">
+
+      <div class="credit-year-block">
+        <div class="credit-year">2026</div>
+        <ul class="credit-list">
+          <li>
+            <span class="credit-title">Grand Horizons</span>
+            <span class="credit-meta">dir. Lisa Weaver — Inver Hills Community College</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="credit-year-block">
+        <div class="credit-year">2025</div>
+        <ul class="credit-list">
+          <li>
+            <span class="credit-title">Kiss of the Spider Woman</span>
+            <span class="credit-meta">dir. Alberto Justiniano — Teatro Del Pueblo</span>
+            <span class="credit-reviews"><a href="https://talkinbroadway.com/page/regional/minn/minn1429.html" target="_blank" rel="noopener">Talkin' Broadway review</a></span>
+          </li>
+          <li>
+            <span class="credit-title">Legacy of Light</span>
+            <span class="credit-meta">dir. Kari Steinbach — Theater in the Round Players</span>
+            <span class="credit-reviews"><a href="https://thestagesofmn.com/2025/02/24/legacy-of-light-at-theatre-in-the-round/" target="_blank" rel="noopener">Stages of MN</a> · <a href="http://www.cherryandspoon.com/2025/02/legacy-of-light-at-theatre-in-round.html" target="_blank" rel="noopener">Cherry and Spoon</a></span>
+          </li>
+          <li>
+            <span class="credit-title">And Then There Were None</span>
+            <span class="credit-meta">dir. Lisa Weaver — Inver Hills Community College</span>
+          </li>
+          <li>
+            <span class="credit-title">A Hero's Nap</span>
+            <span class="credit-meta">dir. Tyler Monroe — Inver Hills Community College</span>
+          </li>
+          <li>
+            <span class="credit-title">The Birds</span>
+            <span class="credit-meta">dir. Joe Hendren — TheatreX</span>
+            <span class="credit-reviews"><a href="https://www.talkinbroadway.com/page/regional/minn/minn1364.html" target="_blank" rel="noopener">Talkin' Broadway review</a></span>
+          </li>
+          <li>
+            <span class="credit-title">West Side Story</span>
+            <span class="credit-meta">dir. Jake Sung-Guk Sullivan — Inver Grove Community Theatre</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="credit-year-block">
+        <div class="credit-year">2024</div>
+        <ul class="credit-list">
+          <li>
+            <span class="credit-title">Men on Boats</span>
+            <span class="credit-meta">dir. Sophia Peyton — Theater in the Round Players</span>
+          </li>
+          <li>
+            <span class="credit-title">These Shining Lives</span>
+            <span class="credit-meta">dir. Lisa Weaver — Inver Hills Community College</span>
+          </li>
+          <li>
+            <span class="credit-title">She Kills Monsters</span>
+            <span class="credit-meta">dir. Tyler Monroe — Inver Hills Community College</span>
+          </li>
+          <li>
+            <span class="credit-title">The Music Man</span>
+            <span class="credit-meta">dir. Deanne McDonald Haywood — Inver Grove Community Theatre</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="credit-year-block">
+        <div class="credit-year">2023</div>
+        <ul class="credit-list">
+          <li>
+            <span class="credit-title">The Doctor in Spite of Himself</span>
+            <span class="credit-meta">dir. George Roesler — Inver Hills Community College</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="credit-year-block">
+        <div class="credit-year">2022</div>
+        <ul class="credit-list">
+          <li>
+            <span class="credit-title">Doubt</span>
+            <span class="credit-meta">dir. Kari Steinbach — Theater in the Round Players</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="credit-year-block">
+        <div class="credit-year">2019</div>
+        <ul class="credit-list">
+          <li>
+            <span class="credit-title">Elf Jr.</span>
+            <span class="credit-meta">Phipps Center for the Arts</span>
+          </li>
+          <li>
+            <span class="credit-title">The Government Inspector</span>
+            <span class="credit-meta">dir. Kari Steinbach — Theater in the Round Players</span>
+          </li>
+          <li>
+            <span class="credit-title">Comedy of Errors</span>
+            <span class="credit-meta">dir. Kari Steinbach — Theater in the Round Players</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="credit-year-block">
+        <div class="credit-year">2018</div>
+        <ul class="credit-list">
+          <li>
+            <span class="credit-title">A Nice Family Gathering</span>
+            <span class="credit-meta">Phipps Center for the Arts</span>
+          </li>
+          <li>
+            <span class="credit-title">Strega Nona</span>
+            <span class="credit-meta">Phipps Center for the Arts</span>
+          </li>
+          <li>
+            <span class="credit-title">The Metromaniacs</span>
+            <span class="credit-meta">dir. Kari Steinbach — Theater in the Round Players</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="credit-year-block">
+        <div class="credit-year">2017</div>
+        <ul class="credit-list">
+          <li>
+            <span class="credit-title">The 39 Steps</span>
+            <span class="credit-meta">dir. Kimberly Miller — The Chameleon Theatre Circle</span>
+          </li>
+          <li>
+            <span class="credit-title">Deathtrap</span>
+            <span class="credit-meta">dir. Shanan Custer — Theater in the Round Players</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="credit-year-block">
+        <div class="credit-year">2016</div>
+        <ul class="credit-list">
+          <li>
+            <span class="credit-title">Sense and Sensibility</span>
+            <span class="credit-meta">dir. Kari Steinbach — Theater in the Round Players</span>
+          </li>
+          <li>
+            <span class="credit-title">Romeo and Juliet</span>
+            <span class="credit-meta">dir. Kari Steinbach — Theater in the Round Players</span>
+          </li>
+        </ul>
+      </div>
+
     </div>
   </div>
 </section>
