@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Backstage Essentials | Bill Larsen</title>
+<meta name="description" content="Backstage Essentials — skills for stagehand technicians in live event production. Author Bill Larsen, CTS, CETL, CIT. Forthcoming 2026 from Routledge.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Barlow:wght@400;500;600&family=Barlow+Semi+Condensed:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rust: #B5481F;
+    --rust-light: #D4602A;
+    --rust-dim: rgba(181,72,31,0.15);
+    --ink: #0A0C0F;
+    --ink-mid: #13161B;
+    --ink-panel: #1A1D24;
+    --rule: #252830;
+    --white: #F5F6F8;
+    --grey: #8A93A3;
+    --grey-light: #C3CAD4;
+    --ff-display: 'Barlow Condensed', sans-serif;
+    --ff-body: 'Barlow', sans-serif;
+    --ff-label: 'Barlow Semi Condensed', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--ink);
+    color: var(--white);
+    font-family: var(--ff-body);
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    height: 64px;
+    background: rgba(10,12,15,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .nav-logo {
+    font-family: var(--ff-display);
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    color: var(--white);
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .nav-logo span { color: var(--rust); }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: var(--ff-label);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--grey-light);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--rust); }
+
+  /* HERO */
+  #home {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    position: relative;
+    overflow: hidden;
+    padding: 0 40px 80px;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(to bottom, rgba(10,12,15,0.3) 0%, rgba(10,12,15,0.7) 50%, rgba(10,12,15,0.97) 100%),
+      linear-gradient(135deg, rgba(181,72,31,0.12) 0%, transparent 60%);
+    background-color: var(--ink);
+  }
+
+  /* Simulated stage atmosphere with CSS */
+  .hero-stage {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 40% at 30% 30%, rgba(181,72,31,0.18) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 30% at 70% 20%, rgba(255,180,80,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse 80% 60% at 50% 80%, rgba(181,72,31,0.06) 0%, transparent 70%);
+  }
+
+  /* LED meter decoration */
+  .hero-meters {
+    position: absolute;
+    top: 80px;
+    right: 40px;
+    display: flex;
+    gap: 4px;
+    opacity: 0.4;
+  }
+
+  .meter-bar {
+    width: 6px;
+    border-radius: 2px;
+    background: linear-gradient(to top, var(--rust) 0%, #e08830 60%, #e8c840 85%, #e84040 100%);
+    animation: meter-pulse 1.8s ease-in-out infinite;
+  }
+
+  .meter-bar:nth-child(1) { height: 48px; animation-delay: 0s; }
+  .meter-bar:nth-child(2) { height: 64px; animation-delay: 0.2s; }
+  .meter-bar:nth-child(3) { height: 40px; animation-delay: 0.4s; }
+  .meter-bar:nth-child(4) { height: 72px; animation-delay: 0.1s; }
+  .meter-bar:nth-child(5) { height: 56px; animation-delay: 0.3s; }
+  .meter-bar:nth-child(6) { height: 48px; animation-delay: 0.5s; }
+  .meter-bar:nth-child(7) { height: 60px; animation-delay: 0.15s; }
+  .meter-bar:nth-child(8) { height: 44px; animation-delay: 0.35s; }
+
+  @keyframes meter-pulse {
+    0%, 100% { opacity: 0.5; transform: scaleY(0.7); }
+    50% { opacity: 1; transform: scaleY(1); }
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+  }
+
+  .hero-eyebrow {
+    font-family: var(--ff-label);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 2px;
+    background: var(--rust);
+  }
+
+  .hero-headline {
+    font-family: var(--ff-display);
+    font-size: clamp(56px, 9vw, 110px);
+    font-weight: 900;
+    line-height: 0.92;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 16px;
+  }
+
+  .hero-headline span {
+    color: var(--rust);
+    display: block;
+  }
+
+  .hero-sub {
+    font-size: 19px;
+    color: var(--grey-light);
+    max-width: 560px;
+    margin-bottom: 40px;
+    line-height: 1.6;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--rust);
+    color: var(--white);
+    font-family: var(--ff-label);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 14px 28px;
+    border-radius: 4px;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .btn-primary:hover {
+    background: var(--rust-light);
+    transform: translateY(-1px);
+  }
+
+  .btn-ghost {
+    display: inline-block;
+    border: 1px solid rgba(255,255,255,0.25);
+    color: var(--grey-light);
+    font-family: var(--ff-label);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 14px 28px;
+    border-radius: 4px;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .btn-ghost:hover {
+    border-color: var(--rust);
+    color: var(--rust);
+  }
+
+  .hero-cred-strip {
+    position: relative;
+    z-index: 2;
+    margin-top: 60px;
+    padding-top: 28px;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .cred-item {
+    font-family: var(--ff-label);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--grey);
+  }
+
+  .cred-item strong {
+    color: var(--grey-light);
+    font-weight: 600;
+  }
+
+  /* SECTION BASE */
+  section {
+    padding: 100px 40px;
+  }
+
+  .section-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-family: var(--ff-label);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--rust);
+  }
+
+  .section-title {
+    font-family: var(--ff-display);
+    font-size: clamp(36px, 5vw, 60px);
+    font-weight: 800;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    margin-bottom: 32px;
+  }
+
+  /* BOOK SECTION */
+  #book {
+    background: var(--ink-mid);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .book-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .book-cover {
+    aspect-ratio: 3/4;
+    background: var(--ink-panel);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 32px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .book-cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--rust-dim) 0%, transparent 60%);
+  }
+
+  .book-cover-spine {
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 8px;
+    background: var(--rust);
+  }
+
+  .book-cover-title {
+    font-family: var(--ff-display);
+    font-size: 28px;
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 1.05;
+    color: var(--white);
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .book-cover-title span { color: var(--rust); }
+
+  .book-cover-sub {
+    font-family: var(--ff-label);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--grey-light);
+    line-height: 1.5;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 24px;
+  }
+
+  .book-cover-author {
+    font-family: var(--ff-label);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--rust);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+  }
+
+  .book-cover-publisher {
+    position: absolute;
+    bottom: 20px;
+    font-family: var(--ff-label);
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--grey);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    z-index: 1;
+  }
+
+  .book-icon {
+    font-size: 48px;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .book-detail p {
+    color: var(--grey-light);
+    margin-bottom: 20px;
+    font-size: 17px;
+    line-height: 1.7;
+  }
+
+  .book-detail p strong {
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  .publisher-note {
+    font-size: 13px;
+    color: var(--grey);
+    font-style: italic;
+    border-left: 2px solid var(--rust);
+    padding-left: 16px;
+    margin-top: 28px;
+    line-height: 1.6;
+  }
+
+  .coming-badge {
+    display: inline-block;
+    background: var(--rust-dim);
+    border: 1px solid var(--rust);
+    color: var(--rust);
+    font-family: var(--ff-label);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 2px;
+    margin-bottom: 24px;
+  }
+
+  /* ABOUT SECTION */
+  #about {
+    background: var(--ink);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .about-photo {
+    aspect-ratio: 3/4;
+    background: var(--ink-panel);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about-photo::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 40%;
+    background: linear-gradient(to top, var(--rust-dim), transparent);
+  }
+
+  .about-photo-placeholder {
+    font-size: 72px;
+    opacity: 0.3;
+  }
+
+  .about-photo-label {
+    font-family: var(--ff-label);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--grey);
+    text-align: center;
+    padding: 0 20px;
+    line-height: 1.5;
+  }
+
+  .about-content p {
+    color: var(--grey-light);
+    font-size: 18px;
+    line-height: 1.75;
+    margin-bottom: 24px;
+  }
+
+  .about-content p strong {
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  .cred-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 40px;
+  }
+
+  .cred-cell {
+    background: var(--ink-panel);
+    padding: 20px 24px;
+  }
+
+  .cred-cell-label {
+    font-family: var(--ff-label);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 6px;
+  }
+
+  .cred-cell-value {
+    font-family: var(--ff-label);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--grey-light);
+    line-height: 1.5;
+  }
+
+  /* LIGHTING SECTION */
+  #lighting {
+    background: var(--ink-mid);
+    border-top: 1px solid var(--rule);
+  }
+
+  .lighting-stage {
+    width: 100%;
+    aspect-ratio: 16/7;
+    background: var(--ink-panel);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 40px;
+  }
+
+  /* Stage simulation */
+  .stage-floor {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 35%;
+    background: linear-gradient(to top, #0d0f14, transparent);
+  }
+
+  .stage-light {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: solid transparent;
+    border-right: solid transparent;
+    border-top: solid;
+    filter: blur(8px);
+    opacity: 0;
+    animation: light-sweep 4s ease-in-out infinite;
+  }
+
+  .stage-light-1 {
+    border-left-width: 60px;
+    border-right-width: 60px;
+    border-top-width: 200px;
+    border-top-color: rgba(181,72,31,0.4);
+    top: 5%; left: 15%;
+    animation-delay: 0s;
+  }
+
+  .stage-light-2 {
+    border-left-width: 80px;
+    border-right-width: 80px;
+    border-top-width: 240px;
+    border-top-color: rgba(255,200,100,0.25);
+    top: 5%; left: 40%;
+    animation-delay: 1s;
+  }
+
+  .stage-light-3 {
+    border-left-width: 60px;
+    border-right-width: 60px;
+    border-top-width: 200px;
+    border-top-color: rgba(181,72,31,0.3);
+    top: 5%; right: 10%;
+    animation-delay: 2s;
+  }
+
+  @keyframes light-sweep {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.9; }
+  }
+
+  .stage-truss {
+    position: absolute;
+    top: 8%; left: 5%; right: 5%;
+    height: 6px;
+    background: repeating-linear-gradient(
+      90deg,
+      var(--rule) 0px,
+      var(--rule) 20px,
+      transparent 20px,
+      transparent 28px
+    );
+    border-top: 2px solid #2a2e38;
+    border-bottom: 2px solid #2a2e38;
+  }
+
+  .fixture {
+    position: absolute;
+    top: 14%;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    animation: fixture-glow 2s ease-in-out infinite;
+  }
+
+  .fixture-1 { left: 18%; background: var(--rust); animation-delay: 0s; }
+  .fixture-2 { left: 33%; background: #e09030; animation-delay: 0.5s; }
+  .fixture-3 { left: 50%; background: var(--rust); animation-delay: 1s; }
+  .fixture-4 { left: 67%; background: #e09030; animation-delay: 0.3s; }
+  .fixture-5 { right: 18%; background: var(--rust); animation-delay: 0.8s; }
+
+  @keyframes fixture-glow {
+    0%, 100% { box-shadow: 0 0 6px 2px currentColor; opacity: 0.7; }
+    50% { box-shadow: 0 0 16px 6px currentColor; opacity: 1; }
+  }
+
+  .stage-label {
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--ff-label);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--grey);
+  }
+
+  .windows-bg {
+    position: absolute;
+    top: 15%; left: 0; right: 0;
+    height: 50%;
+    background: repeating-linear-gradient(
+      90deg,
+      transparent 0%,
+      transparent 12%,
+      rgba(100,120,160,0.06) 12%,
+      rgba(100,120,160,0.06) 14%,
+      transparent 14%
+    );
+  }
+
+  .chandelier {
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 32px;
+    opacity: 0.2;
+    animation: chandelier-sway 6s ease-in-out infinite;
+  }
+
+  @keyframes chandelier-sway {
+    0%, 100% { transform: translateX(-50%) rotate(-1deg); }
+    50% { transform: translateX(-50%) rotate(1deg); }
+  }
+
+  .lighting-bio {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  .lighting-bio p {
+    color: var(--grey-light);
+    line-height: 1.7;
+    font-size: 17px;
+  }
+
+  .venue-list {
+    list-style: none;
+    margin-top: 16px;
+  }
+
+  .venue-list li {
+    font-family: var(--ff-label);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--grey);
+    padding: 8px 0;
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .venue-list li::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--rust);
+    flex-shrink: 0;
+  }
+
+  /* CONTACT / FOOTER */
+  #contact {
+    background: var(--ink);
+    border-top: 1px solid var(--rule);
+    padding: 80px 40px;
+  }
+
+  .contact-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .contact-cta .section-title { margin-bottom: 16px; }
+
+  .contact-cta p {
+    color: var(--grey-light);
+    font-size: 17px;
+    line-height: 1.7;
+    margin-bottom: 32px;
+  }
+
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    text-decoration: none;
+    padding: 18px 20px;
+    background: var(--ink-panel);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    transition: border-color 0.2s;
+  }
+
+  .contact-link:hover { border-color: var(--rust); }
+
+  .contact-link-icon {
+    width: 36px;
+    height: 36px;
+    background: var(--rust-dim);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .contact-link-text {
+    font-family: var(--ff-label);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--grey-light);
+    letter-spacing: 0.02em;
+  }
+
+  footer {
+    background: var(--ink);
+    border-top: 1px solid var(--rule);
+    padding: 28px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .footer-logo {
+    font-family: var(--ff-display);
+    font-size: 16px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--grey);
+  }
+
+  .footer-logo span { color: var(--rust); }
+
+  .footer-note {
+    font-family: var(--ff-label);
+    font-size: 12px;
+    color: var(--grey);
+    letter-spacing: 0.04em;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { gap: 20px; }
+    section { padding: 72px 20px; }
+    #home { padding: 0 20px 64px; }
+    .book-grid, .about-grid, .lighting-bio, .contact-inner {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .about-grid { grid-template-columns: 1fr; }
+    .about-photo { aspect-ratio: 4/3; }
+    .cred-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; align-items: flex-start; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, .stage-light, .fixture, .meter-bar, .chandelier {
+      animation: none !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#home" class="nav-logo">Backstage<span>Essentials</span></a>
+  <ul class="nav-links">
+    <li><a href="#book">Book</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#lighting">Lighting Design</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-stage"></div>
+  <div class="hero-meters">
+    <div class="meter-bar"></div>
+    <div class="meter-bar"></div>
+    <div class="meter-bar"></div>
+    <div class="meter-bar"></div>
+    <div class="meter-bar"></div>
+    <div class="meter-bar"></div>
+    <div class="meter-bar"></div>
+    <div class="meter-bar"></div>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">Backstage Essentials LLC</div>
+    <h1 class="hero-headline">
+      Run<br>
+      <span>the show.</span>
+    </h1>
+    <p class="hero-sub">Skills for stagehand technicians in live event production. Cable has to land. Power has to be safe. The show has to start on time. Thirty years of knowing what that actually takes.</p>
+    <div class="hero-actions">
+      <a href="#book" class="btn-primary">About the Book</a>
+      <a href="#contact" class="btn-ghost">Get in Touch</a>
+    </div>
+  </div>
+
+  <div class="hero-cred-strip">
+    <span class="cred-item"><strong>CTS</strong> AVIXA</span>
+    <span class="cred-item"><strong>CETL</strong> CoSN</span>
+    <span class="cred-item"><strong>CIT</strong> CEDIA</span>
+    <span class="cred-item"><strong>AVIXA</strong> Subject Matter Expert</span>
+    <span class="cred-item"><strong>IATSE</strong> Local 490 Education Coordinator</span>
+    <span class="cred-item"><strong>Routledge</strong> Author, 2026</span>
+  </div>
+</section>
+
+<!-- BOOK -->
+<section id="book">
+  <div class="section-inner">
+    <div class="book-grid">
+      <div class="book-cover">
+        <div class="book-cover-spine"></div>
+        <div class="book-icon">🎭</div>
+        <div class="book-cover-title">Backstage<br><span>Essentials</span></div>
+        <div class="book-cover-sub">Skills for Stagehand Technicians in Live Event Production</div>
+        <div class="book-cover-author">Bill Larsen</div>
+        <div class="book-cover-publisher">Routledge · Taylor &amp; Francis Group · 2026</div>
+      </div>
+
+      <div class="book-detail">
+        <div class="section-label">The Book</div>
+        <h2 class="section-title">Backstage<br>Essentials</h2>
+        <div class="coming-badge">Forthcoming 2026</div>
+        <p><strong>A practical guide to production operations for educational performance spaces</strong> — covering stagecraft fundamentals, crew management, safety protocols, and program sustainability.</p>
+        <p>Written for the people who actually have to run the show. Not a theory text. Not a history of theater. A field guide for the person holding the headset when the curtain goes up.</p>
+        <div class="publisher-note">
+          Backstage Essentials: Skills for Stagehand Technicians in Live Event Production is forthcoming in 2026 from Routledge, an imprint of Taylor and Francis Group. Routledge and Taylor and Francis Group are registered trademarks of Informa UK Limited.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-photo">
+        <div class="about-photo-placeholder">👤</div>
+        <div class="about-photo-label">Bill Larsen<br>Author · Educator · Designer</div>
+      </div>
+
+      <div class="about-content">
+        <div class="section-label">About Bill</div>
+        <h2 class="section-title">Thirty years<br>in the room.</h2>
+        <p>Started as a stagehand. Now I run AV systems and performance spaces for a school district. <strong>Cable still has to land. Power still has to be safe. The show still has to start on time.</strong></p>
+        <p>I'm the District AV Technology Coordinator at ISD 197 in West St. Paul — the formal title for the work. Before that I spent years in professional production and in education leadership. Different rooms, same problems.</p>
+        <p>I'm also the Education Coordinator for IATSE Local 490. That role exists because the live event industry is short on skilled techs and the K-12 system is full of kids who would be great at this work if anyone showed them the door. My job is to open the door.</p>
+        <p>The book, <strong>Backstage Essentials: Skills for Stagehand Technicians in Live Event Production</strong>, comes out in 2026 from Routledge. A practical guide to the work. Stagecraft fundamentals, crew management, safety, and how to build a program that lasts past the person who started it. Written for the people who actually have to run the show.</p>
+
+        <div class="cred-grid">
+          <div class="cred-cell">
+            <div class="cred-cell-label">Certifications</div>
+            <div class="cred-cell-value">CTS (AVIXA) · CETL (CoSN) · CIT (CEDIA)</div>
+          </div>
+          <div class="cred-cell">
+            <div class="cred-cell-label">AVIXA SME</div>
+            <div class="cred-cell-value">CTS exam development · Member USITT, AVIXA, CEDIA</div>
+          </div>
+          <div class="cred-cell">
+            <div class="cred-cell-label">IATSE Local 490</div>
+            <div class="cred-cell-value">Education Coordinator</div>
+          </div>
+          <div class="cred-cell">
+            <div class="cred-cell-label">Contact</div>
+            <div class="cred-cell-value">bill@backstageessentials.com</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTING DESIGN -->
+<section id="lighting">
+  <div class="section-inner">
+    <div class="section-label">Lighting Design</div>
+    <h2 class="section-title">The stage<br>is the brief.</h2>
+
+    <div class="lighting-stage">
+      <div class="windows-bg"></div>
+      <div class="stage-truss"></div>
+      <div class="chandelier">🔆</div>
+      <div class="stage-light stage-light-1"></div>
+      <div class="stage-light stage-light-2"></div>
+      <div class="stage-light stage-light-3"></div>
+      <div class="fixture fixture-1"></div>
+      <div class="fixture fixture-2"></div>
+      <div class="fixture fixture-3"></div>
+      <div class="fixture fixture-4"></div>
+      <div class="fixture fixture-5"></div>
+      <div class="stage-floor"></div>
+      <div class="stage-label">Live event · Large speakers · Decorated venue · Chandelier · Windows to landscape</div>
+    </div>
+
+    <div class="lighting-bio">
+      <div>
+        <p>Freelance theatrical lighting designer with credits at nine Twin Cities venues since 2016. The work runs from intimate black box productions to large staged events, always with the same question: what does this story need the light to do?</p>
+        <p>Currently pursuing a freelance engagement at <strong>Commonweal Theatre Company</strong> in Lanesboro, Minnesota for <em>Eelpout</em>, opening September 19, 2026.</p>
+      </div>
+      <div>
+        <p>Lighting design at the intersection of live event production and performing arts — two disciplines that share more than they admit. Thirty years of knowing what breaks under pressure and how to make it look intentional when it does.</p>
+        <a href="#contact" class="btn-primary" style="margin-top: 16px; display: inline-block;">Discuss a project</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="contact-cta">
+      <div class="section-label">Contact</div>
+      <h2 class="section-title">Let's talk<br>shop.</h2>
+      <p>For speaking engagements, lighting design inquiries, training partnerships, or questions about the book.</p>
+      <a href="mailto:bill@backstageessentials.com" class="btn-primary">Send an email</a>
+    </div>
+
+    <div class="contact-links">
+      <a href="mailto:bill@backstageessentials.com" class="contact-link">
+        <div class="contact-link-icon">✉</div>
+        <div class="contact-link-text">bill@backstageessentials.com</div>
+      </a>
+      <a href="https://orcid.org/0009-0002-7157-8582" target="_blank" rel="noopener" class="contact-link">
+        <div class="contact-link-icon">🔬</div>
+        <div class="contact-link-text">ORCID: 0009-0002-7157-8582</div>
+      </a>
+      <a href="https://www.imdb.com/name/nm4307380/" target="_blank" rel="noopener" class="contact-link">
+        <div class="contact-link-icon">🎬</div>
+        <div class="contact-link-text">IMDb: nm4307380</div>
+      </a>
+      <div class="contact-link" style="cursor: default;">
+        <div class="contact-link-icon">📍</div>
+        <div class="contact-link-text">Cottage Grove, Minnesota</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Backstage<span>Essentials</span> LLC</div>
+  <div class="footer-note">© 2026 Backstage Essentials LLC · bill@backstageessentials.com</div>
+</footer>
+
+</body>
+</html>
