@@ -1456,32 +1456,59 @@
       </div>
     </div>
 
-    <div class="photo-gallery" style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px;">
-      <div class="gallery-item">
-        <img src="west-side-story.webp" alt="West Side Story, Inver Grove Community Theatre, 2025, lighting design by Bill Larsen">
-        <div class="gallery-caption">West Side Story — Inver Grove Community Theatre, 2025</div>
+    <!-- LIGHTBOX -->
+    <div id="lightbox" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.92); z-index:1000; align-items:center; justify-content:center; cursor:zoom-out;" onclick="closeLightbox()">
+      <img id="lightbox-img" src="" alt="" style="max-width:90vw; max-height:90vh; object-fit:contain; border-radius:4px; box-shadow:0 0 80px rgba(0,0,0,0.8);">
+      <div id="lightbox-caption" style="position:fixed; bottom:24px; left:50%; transform:translateX(-50%); font-family:'Barlow Semi Condensed',sans-serif; font-size:13px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.7);"></div>
+      <button onclick="closeLightbox()" style="position:fixed; top:24px; right:32px; background:none; border:none; color:white; font-size:32px; cursor:pointer; opacity:0.6; line-height:1;">&times;</button>
+    </div>
+
+    <div class="photo-gallery" style="display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:8px;">
+      <div class="gallery-item" style="grid-column:span 1; cursor:zoom-in;" onclick="openLightbox('west-side-story.webp','West Side Story — Inver Grove Community Theatre, 2025')">
+        <img src="west-side-story.webp" alt="West Side Story, Inver Grove Community Theatre, 2025">
+        <div class="gallery-caption">West Side Story — Inver Grove, 2025</div>
       </div>
-      <div class="gallery-item">
-        <img src="spider-woman.jpg" alt="Kiss of the Spider Woman, Teatro Del Pueblo, 2025, lighting design by Bill Larsen">
+      <div class="gallery-item" style="grid-column:span 1; cursor:zoom-in;" onclick="openLightbox('spider-woman.jpg','Kiss of the Spider Woman — Teatro Del Pueblo, 2025')">
+        <img src="spider-woman.jpg" alt="Kiss of the Spider Woman, Teatro Del Pueblo, 2025">
         <div class="gallery-caption">Kiss of the Spider Woman — Teatro Del Pueblo, 2025</div>
       </div>
-      <div class="gallery-item">
-        <img src="the-birds.jpg" alt="The Birds, TheatreX, 2025, lighting design by Bill Larsen">
+      <div class="gallery-item" style="grid-column:span 2; cursor:zoom-in;" onclick="openLightbox('the-birds.jpg','The Birds — TheatreX, 2025')">
+        <img src="the-birds.jpg" alt="The Birds, TheatreX, 2025">
         <div class="gallery-caption">The Birds — TheatreX, 2025</div>
       </div>
-      <div class="gallery-item">
-        <img src="img-1783.webp" alt="Theater in the Round Players production, lighting design by Bill Larsen">
-        <div class="gallery-caption">Theater in the Round Players</div>
-      </div>
-      <div class="gallery-item">
-        <img src="img-1775.webp" alt="Theater in the Round Players production, lighting design by Bill Larsen">
-        <div class="gallery-caption">Theater in the Round Players</div>
-      </div>
-      <div class="gallery-item">
-        <img src="legacy-of-light.jpg" alt="Legacy of Light, Theater in the Round Players, 2025, lighting design by Bill Larsen">
+      <div class="gallery-item" style="cursor:zoom-in;" onclick="openLightbox('legacy-of-light.jpg','Legacy of Light — Theater in the Round, 2025')">
+        <img src="legacy-of-light.jpg" alt="Legacy of Light, Theater in the Round Players, 2025">
         <div class="gallery-caption">Legacy of Light — Theater in the Round, 2025</div>
       </div>
+      <div class="gallery-item" style="cursor:zoom-in;" onclick="openLightbox('img-1783.webp','Theater in the Round Players')">
+        <img src="img-1783.webp" alt="Theater in the Round Players production">
+        <div class="gallery-caption">Theater in the Round Players</div>
+      </div>
+      <div class="gallery-item" style="cursor:zoom-in;" onclick="openLightbox('img-1775.webp','Theater in the Round Players')">
+        <img src="img-1775.webp" alt="Theater in the Round Players production">
+        <div class="gallery-caption">Theater in the Round Players</div>
+      </div>
+      <div class="gallery-item" style="cursor:zoom-in;" onclick="openLightbox('elf-jr.jpg','Elf Jr. — Phipps Center for the Arts, 2019')">
+        <img src="elf-jr.jpg" alt="Elf Jr., Phipps Center for the Arts, 2019">
+        <div class="gallery-caption">Elf Jr. — Phipps Center for the Arts, 2019</div>
+      </div>
     </div>
+
+    <script>
+      function openLightbox(src, caption) {
+        var lb = document.getElementById('lightbox');
+        document.getElementById('lightbox-img').src = src;
+        document.getElementById('lightbox-caption').textContent = caption;
+        lb.style.display = 'flex';
+        document.addEventListener('keydown', escHandler);
+      }
+      function closeLightbox() {
+        document.getElementById('lightbox').style.display = 'none';
+        document.getElementById('lightbox-img').src = '';
+        document.removeEventListener('keydown', escHandler);
+      }
+      function escHandler(e) { if (e.key === 'Escape') closeLightbox(); }
+    </script>
 
     <div class="section-label" style="margin-top:64px;">Credits</div>
 
