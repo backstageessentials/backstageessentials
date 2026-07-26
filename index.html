@@ -103,9 +103,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Sans+3:wght@400;500;600&family=Barlow+Semi+Condensed:wght@500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --rust: #1DA8C0;
-    --rust-light: #25C4DF;
-    --rust-dim: rgba(29,168,192,0.15);
+    --accent: #1DA8C0;
+    --accent-light: #25C4DF;
+    --accent-dim: rgba(29,168,192,0.15);
     --ink: #0A0C0F;
     --ink-mid: #13161B;
     --ink-panel: #1A1D24;
@@ -156,7 +156,7 @@
     text-transform: uppercase;
   }
 
-  .nav-logo span { color: var(--rust); }
+  .nav-logo span { color: var(--accent); }
 
   .nav-links {
     display: flex;
@@ -175,7 +175,7 @@
     transition: color 0.2s;
   }
 
-  .nav-links a:hover { color: var(--rust); }
+  .nav-links a:hover { color: var(--accent); }
 
   /* HERO */
   #home {
@@ -229,7 +229,7 @@
   .meter-bar {
     width: 6px;
     border-radius: 2px;
-    background: linear-gradient(to top, var(--rust) 0%, #e08830 60%, #e8c840 85%, #e84040 100%);
+    background: linear-gradient(to top, var(--accent) 0%, #e08830 60%, #e8c840 85%, #e84040 100%);
     animation: meter-pulse 1.8s ease-in-out infinite;
   }
 
@@ -259,7 +259,7 @@
     font-weight: 600;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--rust);
+    color: var(--accent);
     margin-bottom: 20px;
     display: flex;
     align-items: center;
@@ -271,7 +271,7 @@
     display: block;
     width: 32px;
     height: 2px;
-    background: var(--rust);
+    background: var(--accent);
   }
 
   .hero-headline {
@@ -286,7 +286,7 @@
   }
 
   .hero-headline span {
-    color: var(--rust);
+    color: var(--accent);
     display: block;
   }
 
@@ -307,7 +307,7 @@
 
   .btn-primary {
     display: inline-block;
-    background: var(--rust);
+    background: var(--accent);
     color: var(--white);
     font-family: var(--ff-label);
     font-size: 14px;
@@ -321,7 +321,7 @@
   }
 
   .btn-primary:hover {
-    background: var(--rust-light);
+    background: var(--accent-light);
     transform: translateY(-1px);
   }
 
@@ -341,8 +341,8 @@
   }
 
   .btn-ghost:hover {
-    border-color: var(--rust);
-    color: var(--rust);
+    border-color: var(--accent);
+    color: var(--accent);
   }
 
   .hero-cred-strip {
@@ -368,7 +368,7 @@
     transition: color 0.2s;
   }
 
-  a.cred-item:hover { color: var(--rust); }
+  a.cred-item:hover { color: var(--accent); }
 
   .cred-item strong {
     color: var(--grey-light);
@@ -391,7 +391,7 @@
     font-weight: 600;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--rust);
+    color: var(--accent);
     margin-bottom: 20px;
     display: flex;
     align-items: center;
@@ -403,7 +403,7 @@
     display: block;
     width: 24px;
     height: 2px;
-    background: var(--rust);
+    background: var(--accent);
   }
 
   .section-title {
@@ -442,14 +442,14 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, var(--rust-dim) 0%, transparent 60%);
+    background: linear-gradient(135deg, var(--accent-dim) 0%, transparent 60%);
   }
 
   .book-cover-spine {
     position: absolute;
     left: 0; top: 0; bottom: 0;
     width: 8px;
-    background: var(--rust);
+    background: var(--accent);
   }
 
   .book-cover-title {
@@ -464,7 +464,7 @@
     z-index: 1;
   }
 
-  .book-cover-title span { color: var(--rust); }
+  .book-cover-title span { color: var(--accent); }
 
   .book-cover-sub {
     font-family: var(--ff-label);
@@ -481,7 +481,7 @@
     font-family: var(--ff-label);
     font-size: 14px;
     font-weight: 600;
-    color: var(--rust);
+    color: var(--accent);
     letter-spacing: 0.06em;
     text-transform: uppercase;
     position: relative;
@@ -523,7 +523,7 @@
     font-size: 13px;
     color: var(--grey);
     font-style: italic;
-    border-left: 2px solid var(--rust);
+    border-left: 2px solid var(--accent);
     padding-left: 16px;
     margin-top: 28px;
     line-height: 1.6;
@@ -531,9 +531,9 @@
 
   .coming-badge {
     display: inline-block;
-    background: var(--rust-dim);
-    border: 1px solid var(--rust);
-    color: var(--rust);
+    background: var(--accent-dim);
+    border: 1px solid var(--accent);
+    color: var(--accent);
     font-family: var(--ff-label);
     font-size: 12px;
     font-weight: 600;
@@ -575,7 +575,7 @@
     position: absolute;
     bottom: 0; left: 0; right: 0;
     height: 40%;
-    background: linear-gradient(to top, var(--rust-dim), transparent);
+    background: linear-gradient(to top, var(--accent-dim), transparent);
   }
 
   .about-photo-placeholder {
@@ -629,7 +629,7 @@
     font-weight: 600;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--rust);
+    color: var(--accent);
     margin-bottom: 6px;
   }
 
@@ -734,11 +734,11 @@
     animation: fixture-glow 2s ease-in-out infinite;
   }
 
-  .fixture-1 { left: 18%; background: var(--rust); animation-delay: 0s; }
+  .fixture-1 { left: 18%; background: var(--accent); animation-delay: 0s; }
   .fixture-2 { left: 33%; background: #e09030; animation-delay: 0.5s; }
-  .fixture-3 { left: 50%; background: var(--rust); animation-delay: 1s; }
+  .fixture-3 { left: 50%; background: var(--accent); animation-delay: 1s; }
   .fixture-4 { left: 67%; background: #e09030; animation-delay: 0.3s; }
-  .fixture-5 { right: 18%; background: var(--rust); animation-delay: 0.8s; }
+  .fixture-5 { right: 18%; background: var(--accent); animation-delay: 0.8s; }
 
   @keyframes fixture-glow {
     0%, 100% { box-shadow: 0 0 6px 2px currentColor; opacity: 0.7; }
@@ -821,7 +821,7 @@
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: var(--rust);
+    background: var(--accent);
     flex-shrink: 0;
   }
 
@@ -840,7 +840,7 @@
     font-weight: 700;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--rust);
+    color: var(--accent);
     margin-bottom: 20px;
     display: flex;
     align-items: center;
@@ -852,7 +852,7 @@
     display: block;
     width: 20px;
     height: 2px;
-    background: var(--rust);
+    background: var(--accent);
   }
 
   .cv-body {
@@ -906,7 +906,7 @@
     font-family: var(--ff-display);
     font-size: 28px;
     font-weight: 900;
-    color: var(--rust);
+    color: var(--accent);
     line-height: 1;
     margin-bottom: 6px;
   }
@@ -943,7 +943,7 @@
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--rust);
+    color: var(--accent);
     margin-bottom: 8px;
   }
 
@@ -968,8 +968,8 @@
   }
 
   a.cv-affil:hover {
-    border-color: var(--rust);
-    color: var(--rust);
+    border-color: var(--accent);
+    color: var(--accent);
   }
 
   @media (max-width: 768px) {
@@ -990,7 +990,7 @@
     color: var(--grey);
     padding: 0 20px;
   }
-  .ticker-dot { color: var(--rust); font-size: 18px; line-height: 1; padding: 0 4px; }
+  .ticker-dot { color: var(--accent); font-size: 18px; line-height: 1; padding: 0 4px; }
   .credit-ticker:hover { animation-play-state: paused; }
 
   .photo-gallery {
@@ -1074,7 +1074,7 @@
     font-family: var(--ff-display);
     font-size: 22px;
     font-weight: 800;
-    color: var(--rust);
+    color: var(--accent);
     padding: 20px 24px;
     background: var(--ink-panel);
     border-right: 1px solid var(--rule);
@@ -1117,14 +1117,14 @@
   }
 
   .credit-reviews a {
-    color: var(--rust);
+    color: var(--accent);
     text-decoration: none;
     font-family: var(--ff-label);
     font-weight: 600;
     letter-spacing: 0.04em;
   }
 
-  .credit-reviews a:hover { color: var(--rust-light); text-decoration: underline; }
+  .credit-reviews a:hover { color: var(--accent-light); text-decoration: underline; }
 
   /* CONTACT / FOOTER */
   #contact {
@@ -1169,12 +1169,12 @@
     transition: border-color 0.2s;
   }
 
-  .contact-link:hover { border-color: var(--rust); }
+  .contact-link:hover { border-color: var(--accent); }
 
   .contact-link-icon {
     width: 36px;
     height: 36px;
-    background: var(--rust-dim);
+    background: var(--accent-dim);
     border-radius: 4px;
     display: flex;
     align-items: center;
@@ -1211,7 +1211,7 @@
     color: var(--grey);
   }
 
-  .footer-logo span { color: var(--rust); }
+  .footer-logo span { color: var(--accent); }
 
   .footer-note {
     font-family: var(--ff-label);
@@ -1300,35 +1300,35 @@
   <div style="max-width: 1080px; margin: 0 auto;">
     <div style="font-family: var(--ff-label); font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--grey); margin-bottom: 16px; text-align: center;">Member &amp; Affiliated Organizations</div>
     <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; align-items: stretch;">
-      <a href="https://www.avixa.org/training-certification/certification/cts-certification" target="_blank" rel="noopener" style="display:flex; flex-direction:column; align-items:center; background: var(--ink-panel); border: 1px solid var(--rule); border-radius: 4px; padding: 12px 20px; text-decoration: none; transition: border-color 0.2s;" onmouseover="this.style.borderColor='var(--rust)'" onmouseout="this.style.borderColor='var(--rule)'">
+      <a href="https://www.avixa.org/training-certification/certification/cts-certification" target="_blank" rel="noopener" style="display:flex; flex-direction:column; align-items:center; background: var(--ink-panel); border: 1px solid var(--rule); border-radius: 4px; padding: 12px 20px; text-decoration: none; transition: border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--rule)'">
         <span style="font-family: var(--ff-label); font-size: 13px; font-weight: 700; letter-spacing: 0.06em; color: var(--grey-light); text-transform: uppercase;">AVIXA</span>
         <span style="font-size: 11px; color: var(--grey); margin-top: 3px;">Member · SME · CTS</span>
       </a>
-      <a href="https://www.cosn.org/careers-certification/cetl-certification/" target="_blank" rel="noopener" style="display:flex; flex-direction:column; align-items:center; background: var(--ink-panel); border: 1px solid var(--rule); border-radius: 4px; padding: 12px 20px; text-decoration: none; transition: border-color 0.2s;" onmouseover="this.style.borderColor='var(--rust)'" onmouseout="this.style.borderColor='var(--rule)'">
+      <a href="https://www.cosn.org/careers-certification/cetl-certification/" target="_blank" rel="noopener" style="display:flex; flex-direction:column; align-items:center; background: var(--ink-panel); border: 1px solid var(--rule); border-radius: 4px; padding: 12px 20px; text-decoration: none; transition: border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--rule)'">
         <span style="font-family: var(--ff-label); font-size: 13px; font-weight: 700; letter-spacing: 0.06em; color: var(--grey-light); text-transform: uppercase;">CoSN</span>
         <span style="font-size: 11px; color: var(--grey); margin-top: 3px;">Member · CETL</span>
       </a>
-      <a href="https://cedia.org/en-us/smart-home-professionals/certifications/cit-certification/" target="_blank" rel="noopener" style="display:flex; flex-direction:column; align-items:center; background: var(--ink-panel); border: 1px solid var(--rule); border-radius: 4px; padding: 12px 20px; text-decoration: none; transition: border-color 0.2s;" onmouseover="this.style.borderColor='var(--rust)'" onmouseout="this.style.borderColor='var(--rule)'">
+      <a href="https://cedia.org/en-us/smart-home-professionals/certifications/cit-certification/" target="_blank" rel="noopener" style="display:flex; flex-direction:column; align-items:center; background: var(--ink-panel); border: 1px solid var(--rule); border-radius: 4px; padding: 12px 20px; text-decoration: none; transition: border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--rule)'">
         <span style="font-family: var(--ff-label); font-size: 13px; font-weight: 700; letter-spacing: 0.06em; color: var(--grey-light); text-transform: uppercase;">CEDIA</span>
         <span style="font-size: 11px; color: var(--grey); margin-top: 3px;">Member · CIT</span>
       </a>
-      <a href="https://www.usitt.org" target="_blank" rel="noopener" style="display:flex; flex-direction:column; align-items:center; background: var(--ink-panel); border: 1px solid var(--rule); border-radius: 4px; padding: 12px 20px; text-decoration: none; transition: border-color 0.2s;" onmouseover="this.style.borderColor='var(--rust)'" onmouseout="this.style.borderColor='var(--rule)'">
+      <a href="https://www.usitt.org" target="_blank" rel="noopener" style="display:flex; flex-direction:column; align-items:center; background: var(--ink-panel); border: 1px solid var(--rule); border-radius: 4px; padding: 12px 20px; text-decoration: none; transition: border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--rule)'">
         <span style="font-family: var(--ff-label); font-size: 13px; font-weight: 700; letter-spacing: 0.06em; color: var(--grey-light); text-transform: uppercase;">USITT</span>
         <span style="font-size: 11px; color: var(--grey); margin-top: 3px;">Member</span>
       </a>
-      <a href="https://iatse490.net/" target="_blank" rel="noopener" style="display:flex; flex-direction:column; align-items:center; background: var(--ink-panel); border: 1px solid var(--rule); border-radius: 4px; padding: 12px 20px; text-decoration: none; transition: border-color 0.2s;" onmouseover="this.style.borderColor='var(--rust)'" onmouseout="this.style.borderColor='var(--rule)'">
+      <a href="https://iatse490.net/" target="_blank" rel="noopener" style="display:flex; flex-direction:column; align-items:center; background: var(--ink-panel); border: 1px solid var(--rule); border-radius: 4px; padding: 12px 20px; text-decoration: none; transition: border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--rule)'">
         <span style="font-family: var(--ff-label); font-size: 13px; font-weight: 700; letter-spacing: 0.06em; color: var(--grey-light); text-transform: uppercase;">IATSE Local 490</span>
         <span style="font-size: 11px; color: var(--grey); margin-top: 3px;">Education Coordinator</span>
       </a>
-      <a href="https://www.iatse13.org/" target="_blank" rel="noopener" style="display:flex; flex-direction:column; align-items:center; background: var(--ink-panel); border: 1px solid var(--rule); border-radius: 4px; padding: 12px 20px; text-decoration: none; transition: border-color 0.2s;" onmouseover="this.style.borderColor='var(--rust)'" onmouseout="this.style.borderColor='var(--rule)'">
+      <a href="https://www.iatse13.org/" target="_blank" rel="noopener" style="display:flex; flex-direction:column; align-items:center; background: var(--ink-panel); border: 1px solid var(--rule); border-radius: 4px; padding: 12px 20px; text-decoration: none; transition: border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--rule)'">
         <span style="font-family: var(--ff-label); font-size: 13px; font-weight: 700; letter-spacing: 0.06em; color: var(--grey-light); text-transform: uppercase;">IATSE Local 13</span>
         <span style="font-size: 11px; color: var(--grey); margin-top: 3px;">Freelance Stagehand</span>
       </a>
-      <a href="https://www.dpbolvw.net/click-101690845-14076854" target="_blank" rel="noopener" style="display:flex; flex-direction:column; align-items:center; background: var(--ink-panel); border: 1px solid var(--rule); border-radius: 4px; padding: 12px 20px; text-decoration: none; transition: border-color 0.2s;" onmouseover="this.style.borderColor='var(--rust)'" onmouseout="this.style.borderColor='var(--rule)'">
+      <a href="https://www.dpbolvw.net/click-101690845-14076854" target="_blank" rel="noopener" style="display:flex; flex-direction:column; align-items:center; background: var(--ink-panel); border: 1px solid var(--rule); border-radius: 4px; padding: 12px 20px; text-decoration: none; transition: border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--rule)'">
         <span style="font-family: var(--ff-label); font-size: 13px; font-weight: 700; letter-spacing: 0.06em; color: var(--grey-light); text-transform: uppercase;">Routledge</span>
         <span style="font-size: 11px; color: var(--grey); margin-top: 3px;">Author · 2026</span>
       </a>
-      <a href="https://ee-wdf.org/" target="_blank" rel="noopener" style="display:flex; flex-direction:column; align-items:center; background: var(--ink-panel); border: 1px solid var(--rule); border-radius: 4px; padding: 12px 20px; text-decoration: none; transition: border-color 0.2s;" onmouseover="this.style.borderColor='var(--rust)'" onmouseout="this.style.borderColor='var(--rule)'">
+      <a href="https://ee-wdf.org/" target="_blank" rel="noopener" style="display:flex; flex-direction:column; align-items:center; background: var(--ink-panel); border: 1px solid var(--rule); border-radius: 4px; padding: 12px 20px; text-decoration: none; transition: border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--rule)'">
         <span style="font-family: var(--ff-label); font-size: 13px; font-weight: 700; letter-spacing: 0.06em; color: var(--grey-light); text-transform: uppercase;">EE-WDF</span>
         <span style="font-size: 11px; color: var(--grey); margin-top: 3px;">Community Member</span>
       </a>
@@ -1339,11 +1339,11 @@
 <!-- QUOTE PULL -->
 <section id="quote" style="background: var(--ink-mid); border-top: 1px solid var(--rule); padding: 60px 40px;">
   <div class="section-inner" style="max-width: 800px; text-align: center;">
-    <div style="font-size: 64px; color: var(--rust); line-height: 1; margin-bottom: 16px; font-family: Georgia, serif; opacity: 0.6;">&ldquo;</div>
+    <div style="font-size: 64px; color: var(--accent); line-height: 1; margin-bottom: 16px; font-family: Georgia, serif; opacity: 0.6;">&ldquo;</div>
     <blockquote style="font-family: Georgia, 'Times New Roman', serif; font-size: clamp(20px, 2.5vw, 28px); line-height: 1.6; color: var(--grey-light); font-style: italic; margin: 0 0 24px; border: none; padding: 0;">
       Production managers consistently rank attitude and reliability above raw talent. The purpose of this book is to give you the skills for the raw talent, and this chapter explores the professional traits needed to be a successful stagehand technician.
     </blockquote>
-    <div style="font-family: var(--ff-label); font-size: 13px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--rust);">Backstage Essentials &mdash; Routledge, 2026</div>
+    <div style="font-family: var(--ff-label); font-size: 13px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent);">Backstage Essentials &mdash; Routledge, 2026</div>
   </div>
 </section>
 
@@ -1384,15 +1384,15 @@
           <div class="cv-entries">
             <div class="cv-entry">
               <div class="cv-entry-title">Computerized Medical Office Procedures: A Worktext</div>
-              <div class="cv-entry-meta">Saunders / Elsevier · 4 editions · 2002, 2nd ed., 3rd ed. 2010, 4th ed. 2013</div>
-              <div class="cv-body" style="margin-top:4px;">A hands-on guide to medical office administration used in Medical Assistant programs across the United States. <a href="https://shop.elsevier.com/books/computerized-medical-office-procedures/larsen/978-1-4557-2620-2" target="_blank" rel="noopener" style="color: var(--rust);">View at Elsevier</a></div>
+              <div class="cv-entry-meta">Saunders / Elsevier · 4 editions · 2002, 2008, 2010, 2013</div>
+              <div class="cv-body" style="margin-top:4px;">A hands-on guide to medical office administration used in Medical Assistant programs across the United States. <a href="https://shop.elsevier.com/books/computerized-medical-office-procedures/larsen/978-1-4557-2620-2" target="_blank" rel="noopener" style="color: var(--accent);">View at Elsevier</a></div>
             </div>
             <div class="cv-entry" style="border-bottom: none;">
               <div class="cv-entry-title">ESTA Protocol Journal</div>
               <div class="cv-entry-meta">Contributing Author · 2024 and 2025</div>
               <div class="cv-body" style="margin-top:4px;">
-                <a href="https://protocol.esta.org/publication/frame.php?i=837975&p=&pn=&ver=html5" target="_blank" rel="noopener" style="color: var(--rust); display:block; margin-bottom:4px;">Live Event Production Workshop brings industry knowledge into the classroom (Winter 2025)</a>
-                <a href="https://protocol.esta.org/html5/reader/production/default.aspx?pnum=40&edid=232ed181-26ac-4396-b85d-df24e5f4c09a&isshared=true" target="_blank" rel="noopener" style="color: var(--rust);">Tech Warriors: Merging Com-Sci and AV Fields at Two Rivers High School in Minnesota (Winter 2024)</a>
+                <a href="https://protocol.esta.org/publication/frame.php?i=837975&p=&pn=&ver=html5" target="_blank" rel="noopener" style="color: var(--accent); display:block; margin-bottom:4px;">Live Event Production Workshop brings industry knowledge into the classroom (Winter 2025)</a>
+                <a href="https://protocol.esta.org/html5/reader/production/default.aspx?pnum=40&edid=232ed181-26ac-4396-b85d-df24e5f4c09a&isshared=true" target="_blank" rel="noopener" style="color: var(--accent);">Tech Warriors: Merging Com-Sci and AV Fields at Two Rivers High School in Minnesota (Winter 2024)</a>
               </div>
             </div>
           </div>
@@ -1415,12 +1415,12 @@
           <div class="cred-cell-label">This book is for</div>
         </div>
         <ul style="list-style: none; margin: 0; padding: 0;">
-          <li style="padding: 10px 20px; border-bottom: 1px solid var(--rule); color: var(--grey-light); font-size: 14px; display: flex; gap: 10px;"><span style="color: var(--rust);">→</span> New stagehands</li>
-          <li style="padding: 10px 20px; border-bottom: 1px solid var(--rule); color: var(--grey-light); font-size: 14px; display: flex; gap: 10px;"><span style="color: var(--rust);">→</span> Student production crews</li>
-          <li style="padding: 10px 20px; border-bottom: 1px solid var(--rule); color: var(--grey-light); font-size: 14px; display: flex; gap: 10px;"><span style="color: var(--rust);">→</span> Technical theatre students</li>
-          <li style="padding: 10px 20px; border-bottom: 1px solid var(--rule); color: var(--grey-light); font-size: 14px; display: flex; gap: 10px;"><span style="color: var(--rust);">→</span> Community theatre volunteers</li>
-          <li style="padding: 10px 20px; border-bottom: 1px solid var(--rule); color: var(--grey-light); font-size: 14px; display: flex; gap: 10px;"><span style="color: var(--rust);">→</span> Live event technicians</li>
-          <li style="padding: 10px 20px; color: var(--grey-light); font-size: 14px; display: flex; gap: 10px;"><span style="color: var(--rust);">→</span> CTE programs</li>
+          <li style="padding: 10px 20px; border-bottom: 1px solid var(--rule); color: var(--grey-light); font-size: 14px; display: flex; gap: 10px;"><span style="color: var(--accent);">→</span> New stagehands</li>
+          <li style="padding: 10px 20px; border-bottom: 1px solid var(--rule); color: var(--grey-light); font-size: 14px; display: flex; gap: 10px;"><span style="color: var(--accent);">→</span> Student production crews</li>
+          <li style="padding: 10px 20px; border-bottom: 1px solid var(--rule); color: var(--grey-light); font-size: 14px; display: flex; gap: 10px;"><span style="color: var(--accent);">→</span> Technical theatre students</li>
+          <li style="padding: 10px 20px; border-bottom: 1px solid var(--rule); color: var(--grey-light); font-size: 14px; display: flex; gap: 10px;"><span style="color: var(--accent);">→</span> Community theatre volunteers</li>
+          <li style="padding: 10px 20px; border-bottom: 1px solid var(--rule); color: var(--grey-light); font-size: 14px; display: flex; gap: 10px;"><span style="color: var(--accent);">→</span> Live event technicians</li>
+          <li style="padding: 10px 20px; color: var(--grey-light); font-size: 14px; display: flex; gap: 10px;"><span style="color: var(--accent);">→</span> CTE programs</li>
         </ul>
       </div>
     </div>
@@ -1429,35 +1429,35 @@
       <h2 class="section-title">Five things.</h2>
       <div style="display: flex; flex-direction: column; gap: 0; border: 1px solid var(--rule); border-radius: 4px; overflow: hidden;">
         <div style="padding: 20px 24px; border-bottom: 1px solid var(--rule); display: flex; gap: 16px; align-items: flex-start; background: var(--ink-panel);">
-          <span style="color: var(--rust); font-family: var(--ff-display); font-size: 24px; font-weight: 400; line-height: 1; flex-shrink: 0;">01</span>
+          <span style="color: var(--accent); font-family: var(--ff-display); font-size: 24px; font-weight: 400; line-height: 1; flex-shrink: 0;">01</span>
           <div>
             <div style="font-family: var(--ff-label); font-size: 14px; font-weight: 600; color: var(--white); margin-bottom: 4px;">How to act professionally</div>
             <div style="font-size: 13px; color: var(--grey);">What production managers expect from crew, on and off the clock</div>
           </div>
         </div>
         <div style="padding: 20px 24px; border-bottom: 1px solid var(--rule); display: flex; gap: 16px; align-items: flex-start; background: var(--ink-panel);">
-          <span style="color: var(--rust); font-family: var(--ff-display); font-size: 24px; font-weight: 400; line-height: 1; flex-shrink: 0;">02</span>
+          <span style="color: var(--accent); font-family: var(--ff-display); font-size: 24px; font-weight: 400; line-height: 1; flex-shrink: 0;">02</span>
           <div>
             <div style="font-family: var(--ff-label); font-size: 14px; font-weight: 600; color: var(--white); margin-bottom: 4px;">How to communicate across departments</div>
             <div style="font-size: 13px; color: var(--grey);">Headset protocol, crew language, and working with other departments</div>
           </div>
         </div>
         <div style="padding: 20px 24px; border-bottom: 1px solid var(--rule); display: flex; gap: 16px; align-items: flex-start; background: var(--ink-panel);">
-          <span style="color: var(--rust); font-family: var(--ff-display); font-size: 24px; font-weight: 400; line-height: 1; flex-shrink: 0;">03</span>
+          <span style="color: var(--accent); font-family: var(--ff-display); font-size: 24px; font-weight: 400; line-height: 1; flex-shrink: 0;">03</span>
           <div>
             <div style="font-family: var(--ff-label); font-size: 14px; font-weight: 600; color: var(--white); margin-bottom: 4px;">Cabling for lighting, audio, and video</div>
             <div style="font-size: 13px; color: var(--grey);">The right cable for the right job, and how to handle it properly</div>
           </div>
         </div>
         <div style="padding: 20px 24px; border-bottom: 1px solid var(--rule); display: flex; gap: 16px; align-items: flex-start; background: var(--ink-panel);">
-          <span style="color: var(--rust); font-family: var(--ff-display); font-size: 24px; font-weight: 400; line-height: 1; flex-shrink: 0;">04</span>
+          <span style="color: var(--accent); font-family: var(--ff-display); font-size: 24px; font-weight: 400; line-height: 1; flex-shrink: 0;">04</span>
           <div>
             <div style="font-family: var(--ff-label); font-size: 14px; font-weight: 600; color: var(--white); margin-bottom: 4px;">How to troubleshoot through the whole event</div>
             <div style="font-size: 13px; color: var(--grey);">Load-in, show call, and strike: what goes wrong and how to fix it</div>
           </div>
         </div>
         <div style="padding: 20px 24px; display: flex; gap: 16px; align-items: flex-start; background: var(--ink-panel);">
-          <span style="color: var(--rust); font-family: var(--ff-display); font-size: 24px; font-weight: 400; line-height: 1; flex-shrink: 0;">05</span>
+          <span style="color: var(--accent); font-family: var(--ff-display); font-size: 24px; font-weight: 400; line-height: 1; flex-shrink: 0;">05</span>
           <div>
             <div style="font-family: var(--ff-label); font-size: 14px; font-weight: 600; color: var(--white); margin-bottom: 4px;">How to take care of yourself</div>
             <div style="font-size: 13px; color: var(--grey);">Physical demands, safety habits, and sustaining a career in this industry</div>
@@ -1511,10 +1511,10 @@
             <div class="cred-cell-label">What Bill works on</div>
           </div>
           <ul style="list-style: none; margin: 0; padding: 0;">
-            <li style="padding: 14px 24px; border-bottom: 1px solid var(--rule); color: var(--grey-light); font-size: 15px; display: flex; gap: 12px; align-items: flex-start;"><span style="color: var(--rust); margin-top: 2px;">→</span> Authoring and revising practical training resources for live event and AV technicians</li>
-            <li style="padding: 14px 24px; border-bottom: 1px solid var(--rule); color: var(--grey-light); font-size: 15px; display: flex; gap: 12px; align-items: flex-start;"><span style="color: var(--rust); margin-top: 2px;">→</span> Teaching the technical side of AV: installation, AV over IP, and systems integration</li>
-            <li style="padding: 14px 24px; border-bottom: 1px solid var(--rule); color: var(--grey-light); font-size: 15px; display: flex; gap: 12px; align-items: flex-start;"><span style="color: var(--rust); margin-top: 2px;">→</span> Speaking and curriculum development for AV education and workforce training</li>
-            <li style="padding: 14px 24px; color: var(--grey-light); font-size: 15px; display: flex; gap: 12px; align-items: flex-start;"><span style="color: var(--rust); margin-top: 2px;">→</span> Lighting design and live event production</li>
+            <li style="padding: 14px 24px; border-bottom: 1px solid var(--rule); color: var(--grey-light); font-size: 15px; display: flex; gap: 12px; align-items: flex-start;"><span style="color: var(--accent); margin-top: 2px;">→</span> Authoring and revising practical training resources for live event and AV technicians</li>
+            <li style="padding: 14px 24px; border-bottom: 1px solid var(--rule); color: var(--grey-light); font-size: 15px; display: flex; gap: 12px; align-items: flex-start;"><span style="color: var(--accent); margin-top: 2px;">→</span> Teaching the technical side of AV: installation, AV over IP, and systems integration</li>
+            <li style="padding: 14px 24px; border-bottom: 1px solid var(--rule); color: var(--grey-light); font-size: 15px; display: flex; gap: 12px; align-items: flex-start;"><span style="color: var(--accent); margin-top: 2px;">→</span> Speaking and curriculum development for AV education and workforce training</li>
+            <li style="padding: 14px 24px; color: var(--grey-light); font-size: 15px; display: flex; gap: 12px; align-items: flex-start;"><span style="color: var(--accent); margin-top: 2px;">→</span> Lighting design and live event production</li>
           </ul>
         </div>
       </div>
@@ -1780,7 +1780,7 @@
     <!-- Scholarly Identity -->
     <div class="cv-block">
       <div class="cv-section-label">Scholarly Identity</div>
-      <p class="cv-body">Applied researcher and practitioner educator working across live event production, audio-video technology, and workforce development. I design lighting for professional productions, write the national certification exam working AV professionals take to prove their craft, and have run crews at major venues from Target Center to RiverCentre. My forthcoming book from Routledge is the first practitioner-authored training guide of its kind for the field.</p>
+      <p class="cv-body">Applied researcher and practitioner educator working across live event production, audio-video technology, and workforce development. I design lighting for professional productions and contribute to the development and revision of the national CTS certification exam as an AVIXA Subject Matter Expert. I have run crews at major venues from Target Center to RiverCentre. My forthcoming book from Routledge, Backstage Essentials: Skills for Stagehand Technicians in Live Event Production, is under contract and scheduled for publication in 2026.</p>
     </div>
 
     <!-- Education -->
@@ -1847,14 +1847,14 @@
         </div>
         <div class="cv-entry">
           <div class="cv-entry-title">Computerized Medical Office Procedures: A Worktext</div>
-          <div class="cv-entry-meta">Saunders / Elsevier · 4 editions (2003, 2nd ed., 3rd ed. 2011, 4th ed.)</div>
+          <div class="cv-entry-meta">Saunders / Elsevier · 4 editions · 2002, 2008, 2010, 2013</div>
         </div>
         <div class="cv-entry" style="border-bottom: none;">
           <div class="cv-entry-title">ESTA Protocol Journal</div>
           <div class="cv-entry-meta">Contributing Author · 2024 and 2025</div>
           <div class="cv-body" style="margin-top:4px;">
-            <a href="https://protocol.esta.org/publication/frame.php?i=837975&p=&pn=&ver=html5" target="_blank" rel="noopener" style="color: var(--rust); display:block; margin-bottom:4px;">Live Event Production Workshop brings industry knowledge into the classroom · Winter 2025</a>
-            <a href="https://protocol.esta.org/html5/reader/production/default.aspx?pnum=40&edid=232ed181-26ac-4396-b85d-df24e5f4c09a&isshared=true" target="_blank" rel="noopener" style="color: var(--rust);">Tech Warriors: Merging Com-Sci and AV Fields at Two Rivers High School in Minnesota · Winter 2024</a>
+            <a href="https://protocol.esta.org/publication/frame.php?i=837975&p=&pn=&ver=html5" target="_blank" rel="noopener" style="color: var(--accent); display:block; margin-bottom:4px;">Live Event Production Workshop brings industry knowledge into the classroom · Winter 2025</a>
+            <a href="https://protocol.esta.org/html5/reader/production/default.aspx?pnum=40&edid=232ed181-26ac-4396-b85d-df24e5f4c09a&isshared=true" target="_blank" rel="noopener" style="color: var(--accent);">Tech Warriors: Merging Com-Sci and AV Fields at Two Rivers High School in Minnesota · Winter 2024</a>
           </div>
         </div>
       </div>
@@ -1878,11 +1878,11 @@
         </div>
         <div class="cv-entry">
           <div class="cv-entry-title">ASB 110 Personal and Professional Assessment / ASB 208 Introduction to Management</div>
-          <div class="cv-entry-meta">Cardinal Stritch University · approx. 2002 to 2006</div>
+          <div class="cv-entry-meta">Cardinal Stritch University · 2002 to 2006</div>
         </div>
         <div class="cv-entry">
           <div class="cv-entry-title">Technical Writing and Healthcare Law</div>
-          <div class="cv-entry-meta">Southern Illinois University · approx. 1999 to 2002 · Camp Lejeune and Great Lakes Naval Base</div>
+          <div class="cv-entry-meta">Southern Illinois University · 1999 to 2002 · Camp Lejeune and Great Lakes Naval Base</div>
         </div>
         <div class="cv-entry">
           <div class="cv-entry-title">Sole Faculty Member, Medical Assistant Program</div>
@@ -1905,11 +1905,15 @@
       <div class="cv-entries">
         <div class="cv-entry">
           <div class="cv-entry-title">District AV Technology Coordinator</div>
-          <div class="cv-entry-meta">ISD 197, West St. Paul, MN · February 2018 to Present</div>
+          <div class="cv-entry-meta">ISD 197, Mendota Heights, MN · February 2018 to Present</div>
           <div class="cv-body" style="margin-top:4px;">Launched a credit-bearing Live Event Production Workshop (CTE). Built and lead Tech Warriors student production crew, now a district strategic plan target. Served as technical point of contact for a $67,000 auditorium sound system modernization, soliciting competing vendor bids and scoping system design.</div>
         </div>
         <div class="cv-entry">
-          <div class="cv-entry-title">Education Coordinator and Training Developer</div>
+          <div class="cv-entry-title">Owner</div>
+          <div class="cv-entry-meta">Backstage Essentials LLC, Cottage Grove, MN · March 2026 to Present</div>
+        </div>
+        <div class="cv-entry">
+          <div class="cv-entry-title">Education Coordinator</div>
           <div class="cv-entry-meta">IATSE Local 490 · 2026 to Present</div>
         </div>
         <div class="cv-entry">
@@ -1933,7 +1937,7 @@
       <div class="cv-entries">
         <div class="cv-entry">
           <div class="cv-entry-title">One Program, Two Career Pathways: How AV Technology Gives CTE Students Two Ways to Win</div>
-          <div class="cv-entry-meta">MN CTE Summit, Minneapolis, MN · November 12 to 13, 2026 · Submission deadline September 4, 2026</div>
+          <div class="cv-entry-meta">MN CTE Summit, Minneapolis, MN · November 12 to 13, 2026</div>
         </div>
         <div class="cv-entry">
           <div class="cv-entry-title">Students Run the Help Desk: A Tech Pipeline</div>
