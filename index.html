@@ -508,6 +508,151 @@
     z-index: 1;
   }
 
+  /* ---- Book cover: art plate ---- */
+  .book-cover--art {
+    position: relative;
+    display: block;
+    margin: 0;
+    padding: 0;
+    aspect-ratio: 2 / 3;
+    overflow: hidden;
+    background: var(--ink);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    box-shadow: 0 26px 60px rgba(0,0,0,0.55);
+    container-type: inline-size;
+  }
+
+  /* the old decorative wash would fight the photograph */
+  .book-cover--art::before { display: none; }
+
+  .book-cover-art {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 45%;
+    display: block;
+  }
+
+  /* darkens the road cases at the bottom so the title can sit on them */
+  .book-cover--art::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(to top,
+        rgba(10,12,15,0.97) 0%,
+        rgba(10,12,15,0.92) 30%,
+        rgba(10,12,15,0.55) 46%,
+        rgba(10,12,15,0.10) 60%,
+        rgba(10,12,15,0.15) 82%,
+        rgba(10,12,15,0.60) 100%);
+    z-index: 1;
+  }
+
+  .book-cover--art .book-cover-spine { z-index: 3; }
+
+  .book-cover-flag {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 3;
+    background: var(--accent);
+    color: var(--ink);
+    font-family: var(--ff-label);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 11px;
+    font-size: clamp(10px, 2.5cqw, 13px);
+    padding: 0.6em 1.1em;
+    border-bottom-left-radius: 3px;
+  }
+
+  .book-cover-plate {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    padding: 0 7cqw 6cqw calc(8px + 7cqw);
+  }
+
+  .book-cover--art .book-cover-title {
+    font-family: var(--ff-display);
+    font-size: 52px;
+    font-size: 13.5cqw;
+    font-weight: 400;
+    line-height: 0.90;
+    letter-spacing: 0.005em;
+    text-transform: uppercase;
+    color: var(--white);
+    margin: 0 0 0.34em;
+    text-shadow: 0 2px 24px rgba(0,0,0,0.7);
+  }
+
+  .book-cover--art .book-cover-title span {
+    display: block;
+    color: var(--accent);
+  }
+
+  .book-cover-rule {
+    width: 3.4em;
+    height: 2px;
+    background: var(--accent);
+    margin-bottom: 1.1em;
+    font-size: 12px;
+    font-size: clamp(11px, 2.8cqw, 14px);
+  }
+
+  .book-cover--art .book-cover-sub {
+    font-family: var(--ff-label);
+    font-weight: 500;
+    font-size: 14px;
+    font-size: clamp(11.5px, 3.1cqw, 17px);
+    line-height: 1.32;
+    color: var(--grey-light);
+    letter-spacing: 0.01em;
+    margin: 0 0 1.5em;
+    max-width: 94%;
+    text-wrap: balance;
+  }
+
+  .book-cover--art .book-cover-author {
+    font-family: var(--ff-label);
+    font-weight: 600;
+    font-size: 14px;
+    font-size: clamp(13px, 3.6cqw, 19px);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--white);
+    margin: 0 0 0.35em;
+  }
+
+  .book-cover-credential {
+    font-family: var(--ff-label);
+    font-weight: 500;
+    font-size: 11px;
+    font-size: clamp(10px, 2.5cqw, 13px);
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--accent);
+    margin: 0;
+  }
+
+  .book-cover-caption {
+    font-family: var(--ff-label);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--grey);
+    margin-top: 14px;
+    text-align: center;
+  }
+
   .book-detail p {
     color: var(--grey-light);
     margin-bottom: 20px;
@@ -1365,8 +1510,20 @@
 <section id="book">
   <div class="section-inner">
     <div class="book-grid">
-      <div class="book-cover" style="padding:0;overflow:hidden;background:#0a0c0f;">
-        <img src="book-cover-temp.png" alt="Backstage Essentials: Skills for Stagehand Technicians in Live Event Production by Bill Larsen, Routledge 2026" style="width:100%;height:auto;display:block;border-radius:4px;">
+      <div>
+        <figure class="book-cover book-cover--art">
+          <img class="book-cover-art" src="book-cover-art.webp" alt="Front-of-house production desk at a live event: lighting console, monitors, laptop and headset on a road case." width="1200" height="1800" loading="lazy" decoding="async">
+          <span class="book-cover-spine" aria-hidden="true"></span>
+          <span class="book-cover-flag">Coming 2026</span>
+          <figcaption class="book-cover-plate">
+            <div class="book-cover-title">Backstage<span>Essentials</span></div>
+            <div class="book-cover-rule" aria-hidden="true"></div>
+            <p class="book-cover-sub">Skills for Stagehand Technicians in Live Event Production</p>
+            <p class="book-cover-author">Bill Larsen</p>
+            <p class="book-cover-credential">Routledge &middot; 2026</p>
+          </figcaption>
+        </figure>
+        <p class="book-cover-caption">Cover art &middot; final cover design pending</p>
       </div>
 
       <div class="book-detail">
