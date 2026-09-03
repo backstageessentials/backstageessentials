@@ -1,11 +1,11 @@
-# Squarespace legacy URLs, redirected to the single page anchors
-# Drop this file in the repo root. Cloudflare Pages reads it automatically.
+# Squarespace legacy URLs, redirected to the split pages.
+# Cloudflare Pages reads this file from the repo root.
 
-/live-event-book-about-us                                  /#book       301
-/stagehand-technicians-training                            /#book       301
-/bill-larsen-backstage-essentials                          /#about      301
-/lighting-design-live-events                               /#lighting   301
-/live-event-production-blog/soft-skills-stagehand-technicians  /#book    301
+/live-event-book-about-us                                      /book/       301
+/stagehand-technicians-training                                /book/       301
+/bill-larsen-backstage-essentials                              /#about      301
+/lighting-design-live-events                                   /lighting/   301
+/live-event-production-blog/soft-skills-stagehand-technicians  /book/       301
 
 # Catch anything else left under the old blog path
-/live-event-production-blog/*                              /            301
+/live-event-production-blog/*                                  /            301
