@@ -109,123 +109,12 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Public+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/architecture.css">
 <style>
-  :root{
-    --paper:#E6EAE3; --blue:#33466E; --blue-70:rgba(51,70,110,.72);
-    --blue-55:rgba(51,70,110,.55); --blue-faint:rgba(51,70,110,.13);
-    --graphite:#3B403B; --red:#A8392C; --mat:#FAFBF7;
-    --mono:'Courier Prime',ui-monospace,monospace;
-    --text:'Public Sans',system-ui,sans-serif;
-    --hand:'Caveat',cursive;
-  }
-  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-  html{-webkit-text-size-adjust:100%}
-  body{
-    background:var(--paper); color:var(--graphite);
-    font-family:var(--text); font-size:16px; line-height:1.68;
-    padding:0 0 72px;
-    background-image:linear-gradient(var(--blue-faint) 1px,transparent 1px),
-                     linear-gradient(90deg,var(--blue-faint) 1px,transparent 1px);
-    background-size:28px 28px,28px 28px; background-position:-1px -1px;
-  }
-  .sheet{position:relative;z-index:1;max-width:1180px;margin:0 auto;padding:0 28px}
-  a{color:var(--blue)}
-
-  /* paperwork layer — always mono */
-  .mono,.sheetno,.schedule,.titleblock,.idx-no,.idx-rev,.cap,.plate-cap,
-  .crumb,.col-k{font-family:var(--mono)}
-
-  /* header strip */
-  .strip{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;
-    flex-wrap:wrap;padding:40px 0 10px;border-bottom:1.5px solid var(--blue)}
-  .who h1{font-family:var(--mono);font-weight:700;font-size:clamp(26px,4.6vw,46px);
-    line-height:1.04;letter-spacing:-.01em;color:var(--blue)}
-  .who p{font-size:15.5px;color:var(--graphite);margin-top:7px;max-width:48ch}
-  .sheetno{font-size:13px;color:var(--blue);text-align:right;line-height:1.5;white-space:nowrap}
-  .sheetno b{display:block;font-size:30px;letter-spacing:.02em}
-  .crumb{font-size:12px;color:var(--blue-55);letter-spacing:.06em}
-  .crumb a{text-decoration:none;color:var(--blue-55)}
-  .crumb a:hover{color:var(--blue);text-decoration:underline}
-
-  /* prose */
-  .body{max-width:66ch;margin:42px 0 0}
-  .body p{margin-bottom:17px}
-  h2.head{font-family:var(--mono);font-size:15px;font-weight:700;color:var(--blue);
-    border-bottom:1.5px solid var(--blue);padding-bottom:5px;margin:54px 0 0}
-
-  /* pasted prints */
-  .plate-grid{display:grid;gap:30px 22px;margin-top:26px}
-  .g3{grid-template-columns:repeat(3,1fr)}
-  .g4{grid-template-columns:repeat(4,1fr)}
-  .plate{margin:0}
-  .plate-mat{
-    background:var(--mat);padding:9px 9px 9px;
-    box-shadow:0 2px 5px rgba(40,46,38,.17),0 10px 22px rgba(40,46,38,.09);
-    cursor:zoom-in;
-  }
-  .plate-mat img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;background:#cdd2c9}
-  .plate-cap{font-size:11.5px;line-height:1.45;color:var(--blue-70);padding-top:9px}
-  .plate-cap b{color:var(--blue);font-weight:700;letter-spacing:.08em}
-
-  /* schedule */
-  .schedule{width:100%;border-collapse:collapse;border:1.5px solid var(--blue);
-    margin-top:18px;background:rgba(255,255,255,.3);font-variant-numeric:tabular-nums}
-  .schedule thead th{font-size:10.5px;letter-spacing:.14em;color:var(--blue-70);
-    text-align:left;padding:9px 14px;border-bottom:1.5px solid var(--blue);white-space:nowrap}
-  .schedule td{padding:8px 14px;border-bottom:1px solid var(--blue-faint);
-    font-size:13px;line-height:1.5;color:var(--graphite);vertical-align:baseline}
-  .schedule tr:last-child td{border-bottom:none}
-  .schedule tr.grp td{border-top:1px solid var(--blue-55)}
-  .sch-year{color:var(--blue);font-weight:700;width:62px;white-space:nowrap}
-  .sch-title{font-weight:700;color:var(--blue)}
-  .sch-note{color:var(--blue-55);font-size:12px}
-  .schedule a{color:var(--red);text-decoration:none;font-size:12px}
-  .schedule a:hover{text-decoration:underline}
-
-  /* sheet index */
-  .idx-row{display:grid;grid-template-columns:48px 1fr auto;gap:14px;align-items:baseline;
-    padding:12px 2px;border-bottom:1px solid var(--blue-faint);
-    color:var(--graphite);text-decoration:none}
-  .idx-row:hover{background:rgba(51,70,110,.05)}
-  .idx-row:focus-visible{outline:2px solid var(--red);outline-offset:2px}
-  .idx-no{color:var(--blue);font-weight:700;font-size:15px}
-  .idx-ttl{font-weight:600;color:var(--blue)}
-  .idx-sub{display:block;font-weight:400;font-size:14px;color:var(--blue-70);font-family:var(--text)}
-  .idx-rev{font-size:11.5px;color:var(--blue-55);white-space:nowrap}
-
-  /* title block */
-  .tb-wrap{display:flex;justify-content:flex-end;margin-top:56px}
-  .titleblock{border:1.5px solid var(--blue);background:rgba(255,255,255,.4);
-    width:min(470px,100%);position:relative}
-  .tb-row{display:grid;border-bottom:1px solid var(--blue-55)}
-  .tb-row:last-child{border-bottom:none}
-  .tb-2{grid-template-columns:1fr 1fr}
-  .tb-3{grid-template-columns:1fr 1fr 1fr}
-  .tb-c{padding:7px 11px;border-right:1px solid var(--blue-55)}
-  .tb-c:last-child{border-right:none}
-  .tb-k{font-size:9.5px;letter-spacing:.14em;color:var(--blue-70);line-height:1.5}
-  .tb-v{font-size:14px;font-weight:700;color:var(--blue);line-height:1.35}
-  .tb-title{padding:11px;border-bottom:1px solid var(--blue-55)}
-  .tb-title .tb-v{font-size:17px}
-
-  @media (max-width:760px){
-    body{background-size:22px 22px,22px 22px}
-    .sheet{padding:0 18px}
-    .g3,.g4{grid-template-columns:repeat(2,1fr)}
-    .schedule thead{display:none}
-    .schedule,.schedule tbody,.schedule tr,.schedule td{display:block;width:100%}
-    .schedule tr{border-bottom:1px solid var(--blue-55);padding:11px 0}
-    .schedule td{border:none;padding:1px 14px}
-    .schedule td:empty{display:none}
-    .schedule td[data-k]::before{content:attr(data-k) " ";font-size:10px;
-      letter-spacing:.14em;color:var(--blue-55)}
-    .schedule td.sch-year::before{content:none}
-    .idx-row{grid-template-columns:40px 1fr;gap:10px}
-    .idx-rev{grid-column:2}
-  }
-  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
-
-  /* ---- catalog card ---- */
+/* --------------------------------------------------------------
+   Sheet 3 — the book — rules used only on this sheet
+   -------------------------------------------------------------- */
+/* ---- catalog card ---- */
   .card{
     background:#FAF8F0;
     width:min(680px,100%);
@@ -239,52 +128,48 @@
     line-height:26px;
     color:var(--graphite);
   }
-  .card::after{  /* rod hole */
+.card::after{  /* rod hole */
     content:'';position:absolute;left:50%;bottom:11px;transform:translateX(-50%);
     width:17px;height:17px;border-radius:50%;
     background:var(--paper);box-shadow:inset 0 1px 2px rgba(40,46,38,.3);
   }
-  .card-id{
+.card-id{
     position:absolute;top:26px;left:34px;
     font-size:11px;line-height:1.5;color:var(--blue);letter-spacing:.04em;
   }
-  .card-body{margin-left:124px}
-  .card-main{font-weight:700;color:var(--blue)}
-  .card-ind{display:block;padding-left:3.2em;text-indent:-3.2em}
-  .card-tr{margin-top:26px;font-size:12px;color:var(--blue-70)}
-  @media (max-width:620px){
+.card-body{margin-left:124px}
+.card-main{font-weight:700;color:var(--blue)}
+.card-ind{display:block;padding-left:3.2em;text-indent:-3.2em}
+.card-tr{margin-top:26px;font-size:12px;color:var(--blue-70)}
+@media (max-width:620px){
     .card{padding:26px 20px 42px}
     .card-id{position:static;margin-bottom:14px}
     .card-body{margin-left:0}
   }
-
-  /* ---- table of contents, leader dots ---- */
+/* ---- table of contents, leader dots ---- */
   .toc{margin-top:18px;max-width:640px}
-  .toc-row{display:flex;align-items:baseline;gap:9px;font-family:var(--mono);font-size:13.5px;padding:5px 0}
-  .toc-no{color:var(--blue);font-weight:700;width:24px;flex:none;text-align:right}
-  .toc-ttl{flex:none;color:var(--graphite)}
-  .toc-dots{flex:1;border-bottom:1px dotted var(--blue-55);transform:translateY(-4px)}
-  .toc-front .toc-no{color:var(--blue-55)}
-  .toc-front .toc-ttl{color:var(--blue-70);font-style:italic}
-
-  /* ---- plain lists ---- */
+.toc-row{display:flex;align-items:baseline;gap:9px;font-family:var(--mono);font-size:13.5px;padding:5px 0}
+.toc-no{color:var(--blue);font-weight:700;width:24px;flex:none;text-align:right}
+.toc-ttl{flex:none;color:var(--graphite)}
+.toc-dots{flex:1;border-bottom:1px dotted var(--blue-55);transform:translateY(-4px)}
+.toc-front .toc-no{color:var(--blue-55)}
+.toc-front .toc-ttl{color:var(--blue-70);font-style:italic}
+/* ---- plain lists ---- */
   .plain{list-style:none;margin:14px 0 0;max-width:62ch}
-  .plain li{padding:6px 0 6px 22px;position:relative;border-bottom:1px solid var(--blue-faint)}
-  .plain li::before{content:'';position:absolute;left:4px;top:15px;width:7px;height:1.5px;background:var(--blue-55)}
-  .plain li:last-child{border-bottom:none}
-
-  /* ---- also published ---- */
+.plain li{padding:6px 0 6px 22px;position:relative;border-bottom:1px solid var(--blue-faint)}
+.plain li::before{content:'';position:absolute;left:4px;top:15px;width:7px;height:1.5px;background:var(--blue-55)}
+.plain li:last-child{border-bottom:none}
+/* ---- also published ---- */
   .pub{padding:14px 0;border-bottom:1px solid var(--blue-faint);max-width:70ch}
-  .pub:last-child{border-bottom:none}
-  .pub-t{font-family:var(--mono);font-weight:700;color:var(--blue);font-size:14px}
-  .pub-m{font-family:var(--mono);font-size:12px;color:var(--blue-70);margin-bottom:4px}
-
-  .mat-wrap{display:flex;gap:34px;align-items:flex-start;flex-wrap:wrap;margin-top:26px}
-  .cover-mat{background:var(--mat);padding:10px;width:270px;flex:none;
+.pub:last-child{border-bottom:none}
+.pub-t{font-family:var(--mono);font-weight:700;color:var(--blue);font-size:14px}
+.pub-m{font-family:var(--mono);font-size:12px;color:var(--blue-70);margin-bottom:4px}
+.mat-wrap{display:flex;gap:34px;align-items:flex-start;flex-wrap:wrap;margin-top:26px}
+.cover-mat{background:var(--mat);padding:10px;width:270px;flex:none;
     box-shadow:0 2px 5px rgba(40,46,38,.17),0 10px 22px rgba(40,46,38,.09)}
-  .cover-mat img{display:block;width:100%;aspect-ratio:2/3;object-fit:cover}
-  .cover-cap{font-family:var(--mono);font-size:11.5px;color:var(--blue-70);padding-top:9px;width:270px;flex:none}
-  @media (max-width:700px){.cover-mat,.cover-cap{width:100%}}
+.cover-mat img{display:block;width:100%;aspect-ratio:2/3;object-fit:cover}
+.cover-cap{font-family:var(--mono);font-size:11.5px;color:var(--blue-70);padding-top:9px;width:270px;flex:none}
+@media (max-width:700px){.cover-mat,.cover-cap{width:100%}}
 </style>
 </head>
 <body>
@@ -298,7 +183,7 @@
   </div>
 
   <h2 class="head">Catalog record</h2>
-  <div class="card" style="margin-top:20px">
+  <div class="card mt-20">
     <div class="card-id">ISBN<br>978-1-041-04518-2<br><br>2027</div>
     <div class="card-body">
       <span class="card-main">Larsen, William D.</span>
@@ -319,7 +204,7 @@
       <div class="cover-mat"><img src="/book-cover-art.webp" alt="Cover art: a front-of-house production desk with lighting console, monitors and headset on a road case."></div>
       <p class="cover-cap">Cover art. Final cover design pending.</p>
     </div>
-    <div class="body" style="margin-top:0;flex:1;min-width:300px">
+    <div class="body book-prose">
       <p>Backstage Essentials is a practical introduction to the work performed by stagehands and
       event technicians. Topics include production operations, safety, power distribution, audio,
       lighting, video, communication, troubleshooting, and professional expectations.</p>
@@ -380,14 +265,14 @@
   <div class="pub">
     <div class="pub-t">Computerized Medical Office Procedures: A Worktext</div>
     <div class="pub-m">Saunders / Elsevier &nbsp; 4 editions &nbsp; 2002, 2008, 2010, 2013</div>
-    <p style="max-width:66ch">A hands-on guide to medical office administration used in Medical
+    <p class="measure">A hands-on guide to medical office administration used in Medical
     Assistant programs across the United States.
     <a href="https://shop.elsevier.com/books/computerized-medical-office-procedures/larsen/978-1-4557-2620-2" target="_blank" rel="noopener">View at Elsevier</a></p>
   </div>
   <div class="pub">
     <div class="pub-t">ESTA Protocol Journal</div>
     <div class="pub-m">Contributing author &nbsp; 2024 and 2025</div>
-    <p style="max-width:66ch"><a href="https://protocol.esta.org/html5/reader/production/default.aspx?pnum=40&amp;edid=232ed181-26ac-4396-b85d-df24e5f4c09a&amp;isshared=true" target="_blank" rel="noopener">Live Event Production Workshop brings industry knowledge into the classroom</a> (Winter 2025)<br>
+    <p class="measure"><a href="https://protocol.esta.org/html5/reader/production/default.aspx?pnum=40&amp;edid=232ed181-26ac-4396-b85d-df24e5f4c09a&amp;isshared=true" target="_blank" rel="noopener">Live Event Production Workshop brings industry knowledge into the classroom</a> (Winter 2025)<br>
     <a href="https://protocol.esta.org/publication/frame.php?i=837975&amp;p=&amp;pn=&amp;ver=html5" target="_blank" rel="noopener">Tech Warriors: Merging Com-Sci and AV Fields at Two Rivers High School in Minnesota</a> (Winter 2024)</p>
   </div>
 
@@ -395,7 +280,7 @@
   <div class="body">
     <p>Questions about the book, instructional use, review copies, or course adoption are welcome.
     <a href="mailto:bill@backstageessentials.com">bill@backstageessentials.com</a></p>
-    <p style="font-family:var(--mono);font-size:11.5px;color:var(--blue-70);max-width:72ch">
+    <p class="note-fine">
     Backstage Essentials: Skills for Stagehand Technicians in Live Event Production is published by
     Routledge, an imprint of Taylor and Francis Group, and scheduled for release on March 24, 2027.
     Routledge and Taylor and Francis Group are registered trademarks of Informa UK Limited.</p>
@@ -416,11 +301,9 @@
     </div>
   </div>
 
-  <footer style="margin-top:56px;padding-top:18px;border-top:1.5px solid var(--blue);
-    display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
-    font-family:var(--mono);font-size:11.5px;color:var(--blue-70)">
+  <footer class="sheet-foot">
     <span>Backstage Essentials LLC</span>
-    <span><a href="mailto:bill@backstageessentials.com" style="color:var(--blue-70)">bill@backstageessentials.com</a>
+    <span><a href="mailto:bill@backstageessentials.com">bill@backstageessentials.com</a>
       &nbsp; Cottage Grove, Minnesota</span>
     <span>&copy; 2026</span>
   </footer>
