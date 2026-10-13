@@ -93,122 +93,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Public+Sans:ital,wght@0,400;0,600;1,400&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --paper:#E6EAE3; --blue:#33466E; --blue-70:rgba(51,70,110,.72);
-    --blue-55:rgba(51,70,110,.55); --blue-faint:rgba(51,70,110,.13);
-    --graphite:#3B403B; --red:#A8392C; --mat:#FAFBF7;
-    --mono:'Courier Prime',ui-monospace,monospace;
-    --text:'Public Sans',system-ui,sans-serif;
-    --hand:'Caveat',cursive;
-  }
-  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-  html{-webkit-text-size-adjust:100%}
-  body{
-    background:var(--paper); color:var(--graphite);
-    font-family:var(--text); font-size:16px; line-height:1.68;
-    padding:0 0 72px;
-    background-image:linear-gradient(var(--blue-faint) 1px,transparent 1px),
-                     linear-gradient(90deg,var(--blue-faint) 1px,transparent 1px);
-    background-size:28px 28px,28px 28px; background-position:-1px -1px;
-  }
-  .sheet{position:relative;z-index:1;max-width:1180px;margin:0 auto;padding:0 28px}
-  a{color:var(--blue)}
-
-  /* paperwork layer — always mono */
-  .mono,.sheetno,.schedule,.titleblock,.idx-no,.idx-rev,.cap,.plate-cap,
-  .crumb,.col-k{font-family:var(--mono)}
-
-  /* header strip */
-  .strip{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;
-    flex-wrap:wrap;padding:40px 0 10px;border-bottom:1.5px solid var(--blue)}
-  .who h1{font-family:var(--mono);font-weight:700;font-size:clamp(26px,4.6vw,46px);
-    line-height:1.04;letter-spacing:-.01em;color:var(--blue)}
-  .who p{font-size:15.5px;color:var(--graphite);margin-top:7px;max-width:48ch}
-  .sheetno{font-size:13px;color:var(--blue);text-align:right;line-height:1.5;white-space:nowrap}
-  .sheetno b{display:block;font-size:30px;letter-spacing:.02em}
-  .crumb{font-size:12px;color:var(--blue-55);letter-spacing:.06em}
-  .crumb a{text-decoration:none;color:var(--blue-55)}
-  .crumb a:hover{color:var(--blue);text-decoration:underline}
-
-  /* prose */
-  .body{max-width:66ch;margin:42px 0 0}
-  .body p{margin-bottom:17px}
-  h2.head{font-family:var(--mono);font-size:15px;font-weight:700;color:var(--blue);
-    border-bottom:1.5px solid var(--blue);padding-bottom:5px;margin:54px 0 0}
-
-  /* pasted prints */
-  .plate-grid{display:grid;gap:30px 22px;margin-top:26px}
-  .g3{grid-template-columns:repeat(3,1fr)}
-  .g4{grid-template-columns:repeat(4,1fr)}
-  .plate{margin:0}
-  .plate-mat{
-    background:var(--mat);padding:9px 9px 9px;
-    box-shadow:0 2px 5px rgba(40,46,38,.17),0 10px 22px rgba(40,46,38,.09);
-    cursor:zoom-in;
-  }
-  .plate-mat img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;background:#cdd2c9}
-  .plate-cap{font-size:11.5px;line-height:1.45;color:var(--blue-70);padding-top:9px}
-  .plate-cap b{color:var(--blue);font-weight:700;letter-spacing:.08em}
-
-  /* schedule */
-  .schedule{width:100%;border-collapse:collapse;border:1.5px solid var(--blue);
-    margin-top:18px;background:rgba(255,255,255,.3);font-variant-numeric:tabular-nums}
-  .schedule thead th{font-size:10.5px;letter-spacing:.14em;color:var(--blue-70);
-    text-align:left;padding:9px 14px;border-bottom:1.5px solid var(--blue);white-space:nowrap}
-  .schedule td{padding:8px 14px;border-bottom:1px solid var(--blue-faint);
-    font-size:13px;line-height:1.5;color:var(--graphite);vertical-align:baseline}
-  .schedule tr:last-child td{border-bottom:none}
-  .schedule tr.grp td{border-top:1px solid var(--blue-55)}
-  .sch-year{color:var(--blue);font-weight:700;width:62px;white-space:nowrap}
-  .sch-title{font-weight:700;color:var(--blue)}
-  .sch-note{color:var(--blue-55);font-size:12px}
-  .schedule a{color:var(--red);text-decoration:none;font-size:12px}
-  .schedule a:hover{text-decoration:underline}
-
-  /* sheet index */
-  .idx-row{display:grid;grid-template-columns:48px 1fr auto;gap:14px;align-items:baseline;
-    padding:12px 2px;border-bottom:1px solid var(--blue-faint);
-    color:var(--graphite);text-decoration:none}
-  .idx-row:hover{background:rgba(51,70,110,.05)}
-  .idx-row:focus-visible{outline:2px solid var(--red);outline-offset:2px}
-  .idx-no{color:var(--blue);font-weight:700;font-size:15px}
-  .idx-ttl{font-weight:600;color:var(--blue)}
-  .idx-sub{display:block;font-weight:400;font-size:14px;color:var(--blue-70);font-family:var(--text)}
-  .idx-rev{font-size:11.5px;color:var(--blue-55);white-space:nowrap}
-
-  /* title block */
-  .tb-wrap{display:flex;justify-content:flex-end;margin-top:56px}
-  .titleblock{border:1.5px solid var(--blue);background:rgba(255,255,255,.4);
-    width:min(470px,100%);position:relative}
-  .tb-row{display:grid;border-bottom:1px solid var(--blue-55)}
-  .tb-row:last-child{border-bottom:none}
-  .tb-2{grid-template-columns:1fr 1fr}
-  .tb-3{grid-template-columns:1fr 1fr 1fr}
-  .tb-c{padding:7px 11px;border-right:1px solid var(--blue-55)}
-  .tb-c:last-child{border-right:none}
-  .tb-k{font-size:9.5px;letter-spacing:.14em;color:var(--blue-70);line-height:1.5}
-  .tb-v{font-size:14px;font-weight:700;color:var(--blue);line-height:1.35}
-  .tb-title{padding:11px;border-bottom:1px solid var(--blue-55)}
-  .tb-title .tb-v{font-size:17px}
-
-  @media (max-width:760px){
-    body{background-size:22px 22px,22px 22px}
-    .sheet{padding:0 18px}
-    .g3,.g4{grid-template-columns:repeat(2,1fr)}
-    .schedule thead{display:none}
-    .schedule,.schedule tbody,.schedule tr,.schedule td{display:block;width:100%}
-    .schedule tr{border-bottom:1px solid var(--blue-55);padding:11px 0}
-    .schedule td{border:none;padding:1px 14px}
-    .schedule td:empty{display:none}
-    .schedule td[data-k]::before{content:attr(data-k) " ";font-size:10px;
-      letter-spacing:.14em;color:var(--blue-55)}
-    .schedule td.sch-year::before{content:none}
-    .idx-row{grid-template-columns:40px 1fr;gap:10px}
-    .idx-rev{grid-column:2}
-  }
-  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
-</style>
+<link rel="stylesheet" href="/css/architecture.css">
 </head>
 <body>
 <div class="sheet">
@@ -271,7 +156,7 @@
         <figcaption class="plate-cap"><b>PL. 03</b> &nbsp;The Birds · TheatreX, 2025</figcaption>
       </figure>
   </div>
-  <div class="plate-grid g4" style="margin-top:30px">
+  <div class="plate-grid g4 mt-30">
       <figure class="plate">
         <div class="plate-mat"><img src="/legacy-of-light.webp" alt="Legacy of Light, Theatre in the Round Players, 2025" loading="lazy"></div>
         <figcaption class="plate-cap"><b>PL. 04</b> &nbsp;Legacy of Light · Theatre in the Round, 2025</figcaption>
@@ -305,11 +190,9 @@
     </div>
   </div>
 
-  <footer style="margin-top:56px;padding-top:18px;border-top:1.5px solid var(--blue);
-    display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
-    font-family:var(--mono);font-size:11.5px;color:var(--blue-70)">
+  <footer class="sheet-foot">
     <span>Backstage Essentials LLC</span>
-    <span><a href="mailto:bill@backstageessentials.com" style="color:var(--blue-70)">bill@backstageessentials.com</a>
+    <span><a href="mailto:bill@backstageessentials.com">bill@backstageessentials.com</a>
       &nbsp; Cottage Grove, Minnesota</span>
     <span>&copy; 2026</span>
   </footer>
