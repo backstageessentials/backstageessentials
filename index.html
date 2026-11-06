@@ -141,11 +141,10 @@
 .plot-wrap{position:relative;margin:30px 0 8px;border:1.5px solid var(--blue);
     background:rgba(255,255,255,.34);transform:rotate(-.35deg);max-width:720px}
 .plot-wrap img{display:block;width:100%;height:auto}
-.cap{font-size:12px;color:rgba(51,70,110,.66);margin:12px 2px 0;transform:rotate(-.2deg);max-width:720px}
+.cap{font-size:12px;color:var(--blue-2);margin:12px 2px 0;transform:rotate(-.2deg);max-width:720px}
 .body{transform:rotate(.18deg)}
 .index{transform:rotate(-.15deg)}
 .titleblock{transform:rotate(.3deg)}
-.strike{text-decoration:line-through;color:var(--blue-55)}
 .stamp{position:absolute;top:-34px;left:-104px;font-family:var(--hand);font-size:26px;
     color:var(--red);border:2px solid var(--red);border-radius:3px;padding:1px 12px;
     transform:rotate(-9deg);opacity:.85;white-space:nowrap}
@@ -158,17 +157,20 @@
 </style>
 </head>
 <body>
+<a class="skip" href="#content">Skip to content</a>
 <div class="sheet">
   <span class="tape tape-l"></span>
   <span class="tape tape-r"></span>
 
-  <div class="strip">
+  <header class="strip">
     <div class="who">
       <h1>Bill&nbsp;Larsen</h1>
       <p>Lighting design. Live event production. Teaching.</p>
     </div>
     <div class="sheetno">sheet<b>1</b>of 5</div>
-  </div>
+  </header>
+
+  <main id="content">
 
   <h2 class="head mt-34">Forthcoming</h2>
   <div class="bookrow">
@@ -230,6 +232,8 @@
       </div>
     </div>
   </div>
+
+  </main>
 
   <footer class="sheet-foot">
     <span>Backstage Essentials LLC</span>
