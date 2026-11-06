@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accessibility | Bill Larsen</title>
+<meta name="description" content="Accessibility statement for backstageessentials.com. WCAG 2.1 Level AA, how the site was tested, and what has not been tested.">
+<link rel="canonical" href="https://www.backstageessentials.com/accessibility/">
+
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#E6EAE3">
+
+<link rel="preload" href="/fonts/courier-prime-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/public-sans-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/css/architecture.css">
+<style>
+/* --------------------------------------------------------------
+   Accessibility — rules used only on this sheet
+   Like the 404, this is a utility sheet: same components, no sheet
+   number, not in the index. Reached from the footer of every page.
+
+   .stamp-line is the assessed/reviewed date, set as a revision
+   stamp rather than a sentence, because that is where a date lives
+   on a drawing.
+   -------------------------------------------------------------- */
+.stamp-line{
+    font-family: var(--mono);
+    font-size: 11.5px;
+    letter-spacing: .13em;
+    color: var(--blue-2);
+    border: 1.5px solid var(--blue-55);
+    display: inline-block;
+    padding: 9px 14px;
+    margin-top: 14px;
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#content">Skip to content</a>
+<div class="sheet">
+
+  <header class="strip">
+    <div class="who">
+      <h1>Accessibility</h1>
+      <p>How this site is built, what was tested, and what was not.</p>
+    </div>
+    <div class="sheetno"><span class="crumb"><a href="/">&larr; index</a></span><b>&mdash;</b></div>
+  </header>
+
+  <main id="content">
+
+  <div class="body">
+    <p>This statement covers backstageessentials.com, all five sheets, the error page, and this
+    page.</p>
+  </div>
+
+  <h2 class="head">Standard</h2>
+  <div class="body">
+    <p>The site aims to meet Web Content Accessibility Guidelines (WCAG) 2.1 Level AA.</p>
+  </div>
+
+  <h2 class="head">Conformance</h2>
+  <div class="body">
+    <p>Based on the evaluation below, the site conforms to WCAG 2.1 Level AA. That claim covers
+    what was tested. It does not cover testing with assistive technology by the people who rely
+    on it, which has not been done.</p>
+  </div>
+
+  <h2 class="head">How it was evaluated</h2>
+  <div class="body">
+    <p>The site was tested in November 2026 using axe-core 4.10.2, against the WCAG 2.0 Level A
+    and AA and the WCAG 2.1 Level A and AA rule sets. All seven pages returned zero
+    violations.</p>
+
+    <p>Color contrast was measured separately. These pages use a drafting grid built from
+    repeating gradients, and automated tools cannot resolve a background color behind text when
+    the background is a gradient. Every text element was therefore measured directly against the
+    background it renders on. All text meets or exceeds 4.5:1.</p>
+
+    <p>Text resizing was tested at 200 percent. No page produced horizontal scrolling or lost
+    content.</p>
+  </div>
+
+  <h2 class="head">What the site does</h2>
+  <ul class="plain">
+    <li>Semantic landmarks on every page: header, main, navigation, and footer</li>
+    <li>A skip link as the first focusable element</li>
+    <li>A visible focus indicator on every link</li>
+    <li>Text contrast at or above 4.5:1</li>
+    <li>Alternative text on every image</li>
+    <li>Heading levels in order, none skipped</li>
+    <li>Table headers marked with scope</li>
+    <li>Text that resizes to 200 percent without horizontal scrolling</li>
+    <li>A reduced motion rule for visitors who set that preference</li>
+    <li>No forms, no cookies, no analytics scripts, and no third party fonts</li>
+  </ul>
+
+  <h2 class="head">Known limitations</h2>
+  <div class="body">
+    <p>The site has not been tested with screen readers by people who use assistive technology
+    daily. Automated testing finds structural problems. It does not establish that a page is
+    usable.</p>
+
+    <p>My curriculum vitae is also offered as a PDF download. I have not assessed that file for
+    accessibility. The complete CV is published as a web page on this site, and that version is
+    what this statement covers.</p>
+  </div>
+
+  <h2 class="head">Telling me about a problem</h2>
+  <div class="body">
+    <p>If something here does not work for you, write to me at
+    <a href="mailto:bill@backstageessentials.com">bill@backstageessentials.com</a>.
+    I read my own mail and I will reply within five business days.</p>
+  </div>
+
+  <h2 class="head">Dates</h2>
+  <div class="stamp-line">ASSESSED 6 NOVEMBER 2026 &nbsp;&middot;&nbsp; LAST REVIEWED 6 NOVEMBER 2026</div>
+
+  </main>
+
+  <footer class="sheet-foot">
+    <span>Backstage Essentials LLC</span>
+    <span><a href="mailto:bill@backstageessentials.com">bill@backstageessentials.com</a>
+      &nbsp; Cottage Grove, Minnesota</span>
+    <span>&copy; 2026 &nbsp; <a href="/accessibility/">Accessibility</a></span>
+  </footer>
+</div>
+</body>
+</html>
