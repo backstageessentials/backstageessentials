@@ -17,6 +17,14 @@
 # Anything else left under the old blog path
 /live-event-production-blog/*                                  /            301
 
+# --- Squarespace legal pages ---
+# The site collects nothing: no forms, no analytics, no cookies, and
+# no third-party requests. These pages have no content to carry over,
+# so they go to the index.
+/privacy-notice                                                /            301
+/cookie-policy                                                 /            301
+/terms-of-service                                              /            301
+
 # --- Trailing-slash forms ---
 # Cloudflare normally normalises these, but Google has indexed the
 # slashless /book and it is getting clicks, so be explicit.

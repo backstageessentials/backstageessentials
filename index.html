@@ -106,11 +106,12 @@
 }
 </script>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Public+Sans:ital,wght@0,400;0,600;1,400&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+<link rel="preload" href="/fonts/courier-prime-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/public-sans-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/css/architecture.css">
 <style>
+@font-face{font-family:'Caveat';src:url('/fonts/caveat-var.woff2') format('woff2');font-weight:400 700;font-style:normal;font-display:swap}
+
 /* --------------------------------------------------------------
    Sheet 1 — index — rules used only on this sheet
    -------------------------------------------------------------- */
@@ -145,7 +146,6 @@
 .index{transform:rotate(-.15deg)}
 .titleblock{transform:rotate(.3deg)}
 .strike{text-decoration:line-through;color:var(--blue-55)}
-.fix{font-family:var(--hand);color:var(--red);font-size:22px}
 .stamp{position:absolute;top:-34px;left:-104px;font-family:var(--hand);font-size:26px;
     color:var(--red);border:2px solid var(--red);border-radius:3px;padding:1px 12px;
     transform:rotate(-9deg);opacity:.85;white-space:nowrap}
