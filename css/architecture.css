@@ -15,6 +15,55 @@
    ============================================================ */
 
 /* --------------------------------------------------------------
+   TYPEFACES
+   Self-hosted. Nothing is fetched from Google, so no visitor IP
+   leaves the site to a third party and there is no outside request
+   to wait on.
+
+   Files are subsetted to the characters this site uses (basic Latin,
+   Latin-1, dashes, curly quotes, arrows) and served as woff2.
+   Courier Prime is static at two weights; Public Sans and Caveat are
+   variable, so one file covers every weight.
+
+   Caveat is declared on sheet 1 only — it sets one word, the stamp,
+   and the other four sheets should not download it.
+
+   All three are SIL Open Font License 1.1. The licences sit beside
+   the font files in /fonts/.
+
+   font-display: swap means text paints immediately in a fallback and
+   reflows when the webfont lands, rather than showing nothing.
+   -------------------------------------------------------------- */
+@font-face {
+    font-family: 'Courier Prime';
+    src: url('/fonts/courier-prime-400.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+@font-face {
+    font-family: 'Courier Prime';
+    src: url('/fonts/courier-prime-700.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+@font-face {
+    font-family: 'Public Sans';
+    src: url('/fonts/public-sans-var.woff2') format('woff2');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+  }
+@font-face {
+    font-family: 'Public Sans';
+    src: url('/fonts/public-sans-italic-var.woff2') format('woff2');
+    font-weight: 100 900;
+    font-style: italic;
+    font-display: swap;
+  }
+
+/* --------------------------------------------------------------
    TOKENS
    Every colour and face is declared once, here. Change a value
    in this block and it changes on all five sheets.
