@@ -215,3 +215,8 @@ html[data-paper="b"] .stamp{color:var(--ink-red);border-color:var(--ink-red);opa
 .gels .g6 b{color:#fff}
 .gels .gel-ring{position:absolute;left:67px;bottom:3px;width:40px;height:22px;border:3px solid #9CA2AA;border-radius:50%;
   box-shadow:0 2px 3px rgba(60,45,20,.35),inset 0 1px 1px rgba(255,255,255,.6)}
+
+/* left-hand notes belong only in the wide left margin; never let the right-hand rule show them on mid-size windows */
+@media (min-width:1040px) and (max-width:1759px){
+  html[data-paper="b"] .notes-left{display:none}
+}
