@@ -334,6 +334,7 @@ a:focus-visible,
     color: var(--blue-2);
   }
 .sheet-foot a { color: var(--blue-2); }
+.sheet-foot .nw { white-space: nowrap; }
 
 /* --------------------------------------------------------------
    SPACING AND WIDTH UTILITIES
