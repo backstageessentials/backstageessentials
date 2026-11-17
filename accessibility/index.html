@@ -73,13 +73,13 @@
   <h2 class="head">How it was evaluated</h2>
   <div class="body">
     <p>The site was tested on 17 November 2026 using axe-core 4.10.2, against the WCAG 2.0 Level A
-    and AA and the WCAG 2.1 Level A and AA rule sets. All seven pages returned zero violations,
-    at desktop width and at a 390 pixel phone width.</p>
+    and AA and the WCAG 2.1 Level A and AA rule sets. All seven pages returned zero violations
+    at three widths: a 1280 pixel laptop window, a 1920 pixel wide screen, and a 390 pixel phone.</p>
 
     <p>Color contrast was measured separately. These pages sit on a paper texture made from
     images and gradients, and automated tools cannot resolve a background color behind text when
     the background is a texture. Each line of text was therefore measured against the pixels
-    actually drawn behind it: 1,912 lines across the seven pages, at desktop and phone width.
+    actually drawn behind it: 2,737 lines across the seven pages, at those three widths.
     Against the typical background behind each line, every line meets its minimum (4.5:1, or 3:1
     for large text). The lowest is 4.8:1.</p>
 
@@ -94,7 +94,8 @@
     <li>A visible focus indicator on every link</li>
     <li>Text contrast at or above 4.5:1 against the typical paper color (see Known limitations)</li>
     <li>Decorative notes and struck-out text hidden from assistive technology. What the notes say
-        is also written in the regular text elsewhere on the site</li>
+        is also written in the regular text elsewhere on the site. The notes and desk props
+        appear only on wide windows</li>
     <li>Alternative text on every image</li>
     <li>Heading levels in order, none skipped</li>
     <li>Table headers marked with scope</li>
@@ -109,8 +110,8 @@
     daily. Automated testing finds structural problems. It does not establish that a page is
     usable.</p>
 
-    <p>The paper texture has small darker flecks. On about 1 percent of lines of text (19 of
-    1,912), a few of those flecks, or a table border, sit close behind part of the line, and the
+    <p>The paper texture has small darker flecks. On under 1 percent of lines of text (17 of
+    2,737), a few of those flecks, or a table border, sit close behind part of the line, and the
     contrast there dips slightly below 4.5:1. Every line still meets its minimum against the
     typical background behind it.</p>
 
