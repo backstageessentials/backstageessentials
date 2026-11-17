@@ -1,0 +1,154 @@
+/* ============================================================
+   paper.css: replaces the drafting grid with paper, and adds
+   hand-marked corrections. Loaded after architecture.css.
+
+   Warm aged paper: grain, fibers, age speckles, folds, punched
+   holes and two faint coffee rings. Turned on by data-paper="b" on <html>.
+
+   Marks (.mk-del / .mk-fix / .mk-note) are decoration. Struck
+   text is aria-hidden so screen readers only hear the correction.
+   ============================================================ */
+
+@font-face{font-family:'Caveat';src:url('/fonts/caveat-var.woff2') format('woff2');font-weight:400 700;font-style:normal;font-display:swap}
+
+:root{
+  /* secondary text gets a little darker on textured paper so it keeps
+     WCAG AA contrast over stains and grain (was .79) */
+  --blue-2:rgba(51,70,110,.93);
+  --pen:#33466E;      /* ballpoint blue for strike-outs */
+  --pencil:#5A5E66;   /* graphite for margin notes */
+}
+
+/* ---- shared: no grid, paper colour, soft edge darkening ---- */
+html[data-paper]{min-height:100%}
+html[data-paper] body{
+  background-color:var(--paper);
+  min-height:100vh;
+}
+html[data-paper] body::after{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  box-shadow:inset 0 0 130px rgba(96,74,44,.16);
+}
+
+/* ---- option B: warm aged paper, heavy use ---- */
+html[data-paper="b"]{--paper:#ECE4CE;--mat:#FCFBF7;--sheet:#FCFBF7;--blue-2:#2F4068}
+html[data-paper="b"] body{
+  background-image:
+    url('/img/stains-b.svg'),
+    url('/img/paper-foxing.svg'),
+    url('/img/paper-fibers.svg'),
+    url('/img/paper-grain-heavy.svg'),
+    radial-gradient(ellipse at 0% 0%,rgba(120,84,40,.20),rgba(120,84,40,0) 38%),
+    radial-gradient(ellipse at 100% 0%,rgba(120,84,40,.14),rgba(120,84,40,0) 36%),
+    radial-gradient(ellipse at 0% 100%,rgba(120,84,40,.18),rgba(120,84,40,0) 40%),
+    radial-gradient(ellipse at 100% 100%,rgba(120,84,40,.22),rgba(120,84,40,0) 42%),
+    radial-gradient(ellipse at 50% 18%,rgba(255,250,232,.45),rgba(255,250,232,0) 60%);
+  background-repeat:repeat-y,repeat,repeat,repeat,no-repeat,no-repeat,no-repeat,no-repeat,no-repeat;
+  background-position:center top,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0;
+  background-size:max(100%,1100px) auto,700px 700px,480px 480px,300px 300px,100% 100%,100% 100%,100% 100%,100% 100%,100% 100%;
+}
+html[data-paper="b"] body::after{box-shadow:inset 0 0 190px rgba(110,78,36,.30)}
+/* three punched holes down the left edge (wide screens only) */
+html[data-paper="b"] body::before{
+  content:'';position:absolute;left:16px;top:0;bottom:0;width:34px;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(circle at 17px 12%,#b9b2a0 0 8px,rgba(70,55,35,.45) 9px,rgba(70,55,35,0) 12px),
+    radial-gradient(circle at 17px 50%,#b9b2a0 0 8px,rgba(70,55,35,.45) 9px,rgba(70,55,35,0) 12px),
+    radial-gradient(circle at 17px 88%,#b9b2a0 0 8px,rgba(70,55,35,.45) 9px,rgba(70,55,35,0) 12px);
+}
+@media (max-width:1180px){html[data-paper="b"] body::before{display:none}}
+
+/* ---- marks: struck-out mistakes with a handwritten fix ---- */
+.mk-del{position:relative;display:inline-block;color:var(--blue-2);white-space:nowrap}
+.mk-del::before,.mk-del::after{
+  content:'';position:absolute;left:-2px;right:-2px;top:52%;height:1.2px;
+  background:var(--pen);opacity:.8;border-radius:2px;transform:rotate(-1.8deg)}
+.mk-del::after{top:60%;left:2px;right:-3px;height:1px;opacity:.4;transform:rotate(1.2deg)}
+.mk-fix{font-family:var(--hand);font-size:1.45em;line-height:1;color:var(--red);
+  display:inline-block;transform:rotate(-2deg);margin-left:.3em;font-weight:600}
+.mk-note{position:absolute;font-family:var(--hand);font-size:22px;line-height:1.05;
+  color:var(--red);transform:rotate(-5deg);white-space:nowrap;pointer-events:none}
+.mk-note::after{content:'';position:absolute;left:100%;top:55%;width:34px;height:2px;margin-left:5px;
+  background:var(--red);opacity:.75;transform:rotate(8deg);border-radius:2px}
+@media (max-width:760px){.mk-note{display:none}}
+.mk-note.noarrow::after{display:none}
+
+/* ---- notes: sticky notes, torn slips, index cards ----
+   Option B only, wide screens only. Every note repeats words that are
+   already on the page, so they are decoration (aria-hidden in the markup). */
+.notes{display:none}
+@media (min-width:1040px){
+  html[data-paper="b"] .notes{display:flex;flex-direction:column;align-items:flex-start;gap:34px;
+    position:absolute;right:34px;width:240px;z-index:2;pointer-events:none}
+}
+.notes .r1{transform:rotate(-3deg)}
+.notes .r2{transform:rotate(2.4deg);margin-left:8px}
+.notes .r3{transform:rotate(-1.4deg);margin-left:4px}
+
+.sticky{position:relative;width:200px;padding:22px 16px 20px;font-family:var(--hand);font-size:23px;line-height:1.08;
+  color:#3A3A2E;
+  background:linear-gradient(180deg,rgba(255,255,255,.30) 0,rgba(255,255,255,.30) 14px,rgba(255,255,255,0) 14px),#F5E48C;
+  box-shadow:0 13px 14px -10px rgba(60,45,20,.5),0 1px 2px rgba(60,45,20,.25)}
+.sticky b{font-weight:700}
+
+.slip{position:relative;width:198px;filter:drop-shadow(0 7px 6px rgba(60,45,20,.26))}
+.slip-in{display:block;padding:26px 16px 24px;font-family:var(--hand);font-size:22px;line-height:27px;color:#3F4350;
+  background:repeating-linear-gradient(180deg,transparent 0 26px,rgba(51,70,110,.20) 26px 27px),#FBF7EA;
+  clip-path:polygon(0 4%,6% 0,14% 3%,23% 0,33% 3%,45% 0,56% 3%,67% 0,78% 3%,89% 0,100% 3%,100% 97%,91% 100%,80% 97%,69% 100%,57% 97%,44% 100%,33% 97%,20% 100%,9% 97%,0 100%)}
+.tape-s{position:absolute;top:-8px;left:50%;width:76px;height:21px;margin-left:-38px;z-index:1;
+  background:rgba(214,206,170,.72);transform:rotate(-3deg);box-shadow:0 1px 2px rgba(0,0,0,.12)}
+
+.nt-card{position:relative;width:236px;padding:44px 14px 14px;font-family:var(--mono);font-size:12px;line-height:23px;color:var(--graphite);
+  background:linear-gradient(180deg,transparent 0 36px,rgba(168,57,44,.55) 36px 37.5px,transparent 37.5px),
+             repeating-linear-gradient(180deg,transparent 0 22px,rgba(51,70,110,.16) 22px 23px),#FFFDF6;
+  box-shadow:0 9px 10px -7px rgba(60,45,20,.5),0 1px 2px rgba(60,45,20,.25)}
+.pin{position:absolute;top:8px;left:50%;width:14px;height:14px;margin-left:-7px;border-radius:50%;
+  background:radial-gradient(circle at 35% 30%,#ff9a8a,#a8392c 58%,#6e2018);box-shadow:0 3px 4px rgba(0,0,0,.35)}
+
+/* ---- drafting sheets: anything drawn on a sheet (plots, title blocks, schedules,
+   catalog cards) is clean near-white paper. Opaque, so the aged texture and
+   speckles of the desk behind never show through. ---- */
+html[data-paper="b"] .plot-wrap,
+html[data-paper="b"] .titleblock,
+html[data-paper="b"] .schedule,
+html[data-paper="b"] .certs,
+html[data-paper="b"] .bookrec,
+html[data-paper="b"] .card{
+  background-color:var(--sheet);
+  box-shadow:0 1px 2px rgba(60,45,20,.20),0 9px 16px -11px rgba(60,45,20,.38)}
+
+/* ---- paper products: folds, a torn edge, edge wear, a lifted shadow ----
+   Near-white sheets that look like paper that has been handled. The creases
+   are soft shading plus a light highlight, so text stays readable. */
+html[data-paper="b"] .plot-wrap,
+html[data-paper="b"] .schedule,
+html[data-paper="b"] .certs{
+  box-shadow:inset 0 0 22px rgba(130,105,60,.07),0 1px 2px rgba(60,45,20,.20),0 9px 16px -11px rgba(60,45,20,.38)}
+
+/* letter folds on printed tables: two horizontal creases, like a page folded in three */
+html[data-paper="b"] .schedule,
+html[data-paper="b"] .certs{
+  background-image:
+    linear-gradient(180deg,rgba(255,255,255,0) calc(33.3% - 16px),rgba(70,55,30,.04) calc(33.3% - 3px),rgba(70,55,30,.15) 33.3%,rgba(255,255,255,.9) calc(33.3% + 1.5px),rgba(255,255,255,0) calc(33.3% + 16px)),
+    linear-gradient(180deg,rgba(255,255,255,0) calc(66.6% - 16px),rgba(70,55,30,.04) calc(66.6% - 3px),rgba(70,55,30,.15) 66.6%,rgba(255,255,255,.9) calc(66.6% + 1.5px),rgba(255,255,255,0) calc(66.6% + 16px))}
+
+/* the light plot: a big sheet folded in quarters, with a ripped right edge */
+.paper-shadow{max-width:720px;margin:30px 0 8px;transform:rotate(-.35deg)}
+html[data-paper="b"] .paper-shadow{
+  filter:drop-shadow(0 1px 1.5px rgba(60,45,20,.30)) drop-shadow(0 12px 11px rgba(60,45,20,.22))}
+html[data-paper="b"] .paper-shadow .plot-wrap{
+  margin:0;transform:none;border:0;box-shadow:none;max-width:none;
+  clip-path:polygon(0 0,100% 0,99.1% 5%,99.8% 9%,98.6% 14%,99.5% 19%,98.9% 24%,99.9% 30%,98.7% 36%,99.6% 42%,98.8% 48%,99.8% 54%,98.9% 60%,99.7% 66%,98.5% 72%,99.6% 78%,98.9% 84%,99.8% 90%,99.0% 95%,100% 100%,0 100%)}
+html[data-paper="b"] .plot-wrap::after{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background-image:
+    linear-gradient(90deg,rgba(255,255,255,0) calc(50% - 18px),rgba(70,55,30,.04) calc(50% - 3px),rgba(70,55,30,.17) 50%,rgba(255,255,255,.9) calc(50% + 1.5px),rgba(255,255,255,0) calc(50% + 18px)),
+    linear-gradient(180deg,rgba(255,255,255,0) calc(50% - 18px),rgba(70,55,30,.04) calc(50% - 3px),rgba(70,55,30,.16) 50%,rgba(255,255,255,.9) calc(50% + 1.5px),rgba(255,255,255,0) calc(50% + 18px))}
+@media (max-width:760px){.paper-shadow{transform:none}}
+
+/* ---- red ink that must stay readable on this paper ---- */
+html[data-paper="b"]{--ink-red:#8E2F25}
+html[data-paper="b"] .mk-fix,
+html[data-paper="b"] .mk-note{color:var(--ink-red)}
+html[data-paper="b"] .void-stamp{color:var(--ink-red);border-color:var(--ink-red);background:var(--sheet)}
+html[data-paper="b"] .stamp{color:var(--ink-red);border-color:var(--ink-red);opacity:1}
