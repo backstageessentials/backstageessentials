@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Lift Cost Calculator</title>
+<title>Solo or Team Lift?</title>
 <style>
   :root {
     --brand: #D6006C;
@@ -84,30 +84,27 @@
 </div>
 <script>
 // <!-- CUSTOMIZE -->
-// Back-strain index: a rough single-number estimate that combines load
-// weight and walking distance. Numbers above 100 are the calling-for-help
-// threshold; below that, a careful solo lift is in range for a typical
-// hand. This is a teaching tool, not a medical guideline.
+// Matches the Lifting lesson: anything over 50 pounds solo is a team lift.
+// Distance is not part of the rule, so there is no distance slider.
+// Awkward loads, loads you cannot see over, and overhead lifts are team
+// lifts at any weight. The widget says so in the solo message.
 const CONFIG = {
-  title: "Lift Cost Calculator",
-  intro: "Slide the load and the walk. See whether this is solo or a team lift.",
+  title: "Solo or Team Lift?",
+  intro: "Slide the load weight. See whether this is a solo lift or a team lift.",
   inputs: [
     { id: "weight", label: "Load weight", min: 10, max: 300, step: 5, defaultValue: 60, unit: " lbs" },
-    { id: "distance", label: "Walk distance", min: 5, max: 60, step: 5, defaultValue: 20, unit: " ft" },
   ],
   output: {
-    label: "Back strain index",
-    formula: function (vals) {
-      // Weight matters more than distance; both add up. Awkward shapes
-      // are not in this model. Treat 100 as the team-lift threshold.
-      return Math.round(vals.weight * 1.4 + vals.distance * 1.2);
-    },
-    unit: "",
+    label: "Load weight",
+    formula: function (vals) { return vals.weight; },
+    unit: " lbs",
     decimals: 0,
   },
-  thresholdLabel: "Calling for help threshold is 100",
-  threshold: 100,
-  underMessage: "Solo lift is in range. Hinge at hips, plan the path before you grip.",
+  thresholdLabel: "Over 50 pounds is a team lift",
+  threshold: 50,
+  underBadge: "Solo lift",
+  overBadge: "Team lift",
+  underMessage: "Solo is in range by weight. Awkward, too tall to see over, or going overhead still means a team lift. Hinge at hips, plan the path before you grip.",
   overMessage: "Call a team lift. 'Need a hand on this one.' Lift on count.",
 };
 // END CUSTOMIZE -->
@@ -167,11 +164,11 @@ const CONFIG = {
     });
     outputValueEl.textContent = formatted + (CONFIG.output.unit || "");
     if (result <= CONFIG.threshold) {
-      badgeEl.textContent = "Under capacity";
+      badgeEl.textContent = CONFIG.underBadge;
       badgeEl.className = "badge under";
       messageEl.textContent = CONFIG.underMessage;
     } else {
-      badgeEl.textContent = "Over capacity";
+      badgeEl.textContent = CONFIG.overBadge;
       badgeEl.className = "badge over";
       messageEl.textContent = CONFIG.overMessage;
     }
