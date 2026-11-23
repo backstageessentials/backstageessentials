@@ -1,0 +1,115 @@
+/* ------------------------------------------------------------------
+   Comic callouts, layered over the existing sheet.
+   Nothing here replaces the site: the paper, the grid, the title
+   block, the sheet nav and the type all stay. The only thing that
+   changes is how the site LABELS things. Soft desk clutter (sticky
+   notes, tape, pins, handwriting) becomes the hard-edged caption
+   box that a comic page uses to narrate.
+   ------------------------------------------------------------------ */
+@font-face{font-family:"Archivo Black";src:url("/fonts/archivo-black-latin-400-normal.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
+
+:root{ --box:3px; --callout-red:#C8202F; }
+
+/* ---- 1. the caption box ------------------------------------------ */
+.notes .sticky,
+.notes .slip,
+.notes .nt-card,
+.notes-left .sticky,
+.notes-left .slip,
+.notes-left .nt-card{
+  background:var(--mat) !important;
+  border:var(--box) solid var(--blue) !important;
+  border-radius:0 !important;
+  box-shadow:none !important;
+  filter:none !important;
+  transform:none !important;
+  padding:11px 13px !important;
+  font-family:"Archivo Black",system-ui,sans-serif !important;
+  font-size:11.5px !important;
+  line-height:1.4 !important;
+  letter-spacing:.035em !important;
+  text-transform:uppercase !important;
+  color:var(--blue) !important;
+  background-image:none !important;
+}
+/* every scrap of desk furniture goes: tape, pins, torn edges, ruled lines */
+.notes .tape-s,.notes .pin,.notes-left .tape-s,.notes-left .pin,
+.notes .slip::before,.notes .slip::after,
+.notes .nt-card::before,.notes .nt-card::after,
+.notes .sticky::before,.notes .sticky::after{display:none !important}
+/* the notepad ruling and torn edge live on .slip-in, not .slip */
+.notes .slip-in,.notes-left .slip-in{
+  font-family:inherit !important;font-size:inherit !important;line-height:inherit !important;
+  color:inherit !important;background:none !important;background-image:none !important;
+  clip-path:none !important;padding:0 !important;display:block}
+.notes .sticky b,.notes .slip b,.notes .nt-card b{font-weight:400;color:var(--callout-red)}
+
+/* one callout per column carries the spot colour, so the eye has a target */
+.notes .sticky:first-child{background:var(--callout-red) !important;color:#fff !important}
+.notes .sticky:first-child b{color:#fff}
+
+/* ---- 2. the photo caption notches into the picture --------------- */
+.paper-shadow{filter:none !important}
+.paper-shadow .photo-plate,
+.paper-shadow .plot-wrap{
+  border:var(--box) solid var(--blue) !important;
+  box-shadow:none !important;
+  padding:0 !important;
+  background:var(--mat) !important;
+  clip-path:none !important;
+}
+.paper-shadow .plot-wrap::after{display:none !important}   /* the folds */
+p.cap{
+  display:inline-block;position:relative;z-index:4;
+  margin:-56px 0 30px 18px !important;
+  background:var(--mat);
+  border:var(--box) solid var(--blue);
+  padding:8px 12px;
+  font-family:"Archivo Black",system-ui,sans-serif;
+  font-size:11.5px;line-height:1.3;letter-spacing:.035em;
+  text-transform:uppercase;color:var(--blue);
+}
+p.cap em{font-style:normal}
+
+/* plate captions on the lighting and AV sheets get the same box */
+.plate-mat{box-shadow:none !important;border:var(--box) solid var(--blue);padding:0 !important}
+.plate-cap{
+  display:inline-block;margin:-46px 0 0 12px;position:relative;z-index:4;
+  background:var(--mat);border:var(--box) solid var(--blue);padding:7px 10px;
+  font-family:"Archivo Black",system-ui,sans-serif;font-size:11px;
+  letter-spacing:.035em;text-transform:uppercase;color:var(--blue);
+}
+.plate-cap b{color:var(--callout-red);font-weight:400}
+
+/* ---- 3. section headings become narration boxes ------------------ */
+h2.head{
+  display:table;            /* shrink-wraps like inline-block, but starts its own line */
+  margin-top:34px;
+  background:var(--blue);color:var(--mat);
+  border:var(--box) solid var(--blue);
+  padding:7px 13px 8px;
+  font-family:"Archivo Black",system-ui,sans-serif !important;
+  font-size:13px !important;letter-spacing:.05em !important;
+  text-transform:uppercase;
+  border-bottom:var(--box) solid var(--blue) !important;
+  width:auto !important;
+}
+
+/* ---- 4. the signal flow reads as a panel strip ------------------- */
+.sigflow i{
+  border:2px solid var(--blue) !important;
+  background:var(--mat) !important;
+  font-family:"Archivo Black",system-ui,sans-serif;
+  font-size:9.5px !important;letter-spacing:.05em;
+  color:var(--blue) !important;
+}
+.sigflow b{font-family:"Archivo Black",system-ui,sans-serif;color:var(--callout-red)}
+
+/* ---- 5. the red pencil annotations stay. they already belong. ---- */
+.mk-note{color:var(--callout-red) !important}
+
+/* ---- 6. on narrow screens the caption sits under the picture ---- */
+@media (max-width:620px){
+  p.cap{margin:12px 0 22px 0 !important;display:block}
+  .plate-cap{margin:10px 0 0 0;display:block}
+}

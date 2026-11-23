@@ -1,0 +1,135 @@
+/* ------------------------------------------------------------------
+   Graphic novel language for backstageessentials.com
+   Ink: the existing blue. Paper: the existing paper. One spot red.
+   Grammar: panels, gutters, a heavy line around every shape, flat
+   fills, halftone for depth, and a caption box to narrate.
+   ------------------------------------------------------------------ */
+@font-face{font-family:"Archivo Black";src:url("/_lookfonts/archivo-black-latin-400-normal.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Archivo";src:url("/_lookfonts/archivo-latin-400-normal.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Archivo";src:url("/_lookfonts/archivo-latin-500-normal.woff2") format("woff2");font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:"Archivo";src:url("/_lookfonts/archivo-latin-600-normal.woff2") format("woff2");font-weight:600;font-style:normal;font-display:swap}
+
+:root{
+  --paper:#E6EAE3;      /* unchanged */
+  --ink:#33466E;        /* unchanged. now it is the line, not the text colour */
+  --red:#C8202F;        /* R27, the one spot colour */
+  --fill:#FAFBF7;       /* panel interior */
+  --body:#2A2F2C;
+  --quiet:rgba(42,47,44,.70);   /* lowest alpha clearing 4.5:1 on both paper and panel fill */
+  --line:4px;
+  --gutter:14px;
+  --page:1300px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--paper);color:var(--body);
+  font:400 16.5px/1.65 Archivo,system-ui,sans-serif;
+}
+a{color:inherit}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:14px;top:14px;background:var(--ink);color:var(--paper);padding:10px 16px;z-index:99}
+:focus-visible{outline:4px solid var(--red);outline-offset:-4px}
+
+.page{max-width:var(--page);margin:0 auto;padding:var(--gutter)}
+
+/* ---- the panel. everything on the site lives in one. ---- */
+.panel{
+  border:var(--line) solid var(--ink);
+  background:var(--fill);
+  position:relative;
+  min-width:0;          /* so grid children can shrink */
+}
+.panel.ink{background:var(--ink);color:var(--paper)}
+.panel.red{background:var(--red);color:#fff}
+.panel.flat{background:var(--paper)}
+.pad{padding:22px 24px 24px}
+
+/* halftone: the only shading in the language */
+.panel.dots{
+  background-image:radial-gradient(rgba(51,70,110,.42) 1.1px,transparent 1.2px);
+  background-size:6px 6px;background-color:var(--fill);
+}
+
+/* ---- the caption box. square, hard, sits over the top-left of a panel. ---- */
+.cap{
+  display:inline-block;background:var(--fill);color:var(--ink);
+  border:var(--line) solid var(--ink);
+  font-family:"Archivo Black",system-ui,sans-serif;
+  font-size:13px;line-height:1.25;letter-spacing:.04em;text-transform:uppercase;
+  padding:7px 11px;
+}
+.cap.red{background:var(--red);color:#fff;border-color:var(--ink)}
+.cap.over{position:absolute;top:calc(var(--line) * -1);left:calc(var(--line) * -1);z-index:3}
+.cap.over-br{position:absolute;bottom:calc(var(--line) * -1);right:calc(var(--line) * -1);z-index:3}
+.cap b{font-weight:400}
+
+/* ---- the grid of panels. the gutter is paper showing through. ---- */
+.strip{display:grid;gap:var(--gutter);grid-template-columns:repeat(12,1fr);margin-bottom:var(--gutter)}
+.c12{grid-column:span 12}.c8{grid-column:span 8}.c7{grid-column:span 7}
+.c6{grid-column:span 6}.c5{grid-column:span 5}.c4{grid-column:span 4}.c3{grid-column:span 3}
+
+/* ---- type inside panels ---- */
+h1,h2,h3{font-family:"Archivo Black",system-ui,sans-serif;font-weight:400;letter-spacing:-.025em;margin:0}
+h1{font-size:clamp(34px,6.4vw,82px);line-height:.95}
+h2{font-size:clamp(22px,2.9vw,38px);line-height:1.02;margin-bottom:14px}
+h3{font-size:18px;line-height:1.15;margin-bottom:8px}
+.panel p{margin:0 0 12px;max-width:62ch}
+.panel p:last-child{margin-bottom:0}
+.lede{font-size:18.5px;line-height:1.6}
+.panel.ink p,.panel.ink .meta{color:rgba(230,234,227,.86)}
+.meta{font-size:14.5px;color:var(--quiet)}
+
+/* images sit flush inside the panel, the border is the frame */
+.shot{display:block;width:100%;height:100%;object-fit:cover}
+.framed{position:relative;line-height:0;overflow:hidden}
+.framed.tall .shot{aspect-ratio:3/4}
+.framed.wide .shot{aspect-ratio:16/9}
+.framed.sq .shot{aspect-ratio:1/1}
+.framed.splash .shot{aspect-ratio:21/9}
+
+/* ---- links styled as buttons cut from the same ink ---- */
+.btn{
+  display:inline-block;text-decoration:none;
+  font-family:"Archivo Black",sans-serif;font-size:13.5px;letter-spacing:.04em;
+  text-transform:uppercase;padding:11px 16px;
+  border:var(--line) solid var(--ink);background:var(--ink);color:var(--paper);
+  margin:10px 8px 0 0;
+}
+.btn.out{background:var(--fill);color:var(--ink)}
+.btn:hover{background:var(--red);border-color:var(--red);color:#fff}
+
+/* ---- the sheet strip: one small panel per sheet, read left to right ---- */
+.sheets{display:grid;gap:var(--gutter);grid-template-columns:repeat(6,1fr);margin-bottom:var(--gutter)}
+.sheets a{
+  text-decoration:none;border:var(--line) solid var(--ink);background:var(--fill);
+  color:var(--ink);padding:12px 12px 14px;display:block;min-width:0;
+}
+.sheets a[aria-current]{background:var(--ink);color:var(--paper)}
+.sheets a:hover{background:var(--red);border-color:var(--red);color:#fff}
+.sheets .n{font-family:"Archivo Black",sans-serif;font-size:13px;display:block;margin-bottom:4px}
+.sheets .t{font-size:13.5px;line-height:1.2;display:block}
+
+/* ---- a run of record rows inside one panel ---- */
+.rows{display:grid}
+.rows>div{display:grid;grid-template-columns:minmax(120px,160px) minmax(0,1fr);gap:0 20px;
+  padding:14px 0;border-top:2px solid rgba(51,70,110,.26)}
+.rows>div:first-child{border-top:0;padding-top:0}
+.rows .k{font-family:"Archivo Black",sans-serif;font-size:12px;letter-spacing:.05em;
+  text-transform:uppercase;color:var(--ink);padding-top:2px}
+.rows .v b{font-weight:600}
+.rows .v p{margin:4px 0 0;font-size:15.5px;color:var(--quiet);max-width:70ch}
+.panel.ink .rows>div{border-color:rgba(230,234,227,.3)}
+.panel.ink .rows .k{color:var(--paper)}
+.panel.ink .rows .v p{color:rgba(230,234,227,.78)}
+
+.foot{font-size:14px;color:var(--quiet);display:flex;justify-content:space-between;
+  gap:16px;flex-wrap:wrap;padding:4px 2px 10px}
+
+@media (max-width:900px){
+  :root{--line:3px;--gutter:10px}
+  .c8,.c7,.c6,.c5,.c4,.c3{grid-column:span 12}
+  .sheets{grid-template-columns:repeat(2,1fr)}
+  .rows>div{grid-template-columns:1fr;gap:4px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
