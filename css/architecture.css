@@ -176,7 +176,7 @@ h2.head{font-family:var(--mono);font-size:15px;font-weight:700;color:var(--blue)
 /* --------------------------------------------------------------
    SHEET INDEX
    Sheet 1 only. A drawing set lists its sheets; this site has
-   five pages, so the navigation is that list.
+   six sheets, so the navigation is that list.
    -------------------------------------------------------------- */
 
 .idx-row:hover{background:rgba(51,70,110,.05)}
