@@ -116,7 +116,7 @@ a{color:var(--blue)}
 
 .who h1{font-family:var(--mono);font-weight:700;font-size:clamp(26px,4.6vw,46px);
     line-height:1.04;letter-spacing:-.01em;color:var(--blue)}
-.who p{font-size:15.5px;color:var(--graphite);margin-top:7px;max-width:48ch}
+.who p{font-size:15.5px;color:var(--graphite);margin-top:7px;max-width:48ch;text-wrap:balance}
 .crumb{font-size:12px;color:var(--blue-2);letter-spacing:.06em}
 .crumb a{text-decoration:none;color:var(--blue-2)}
 .crumb a:hover{color:var(--blue);text-decoration:underline}

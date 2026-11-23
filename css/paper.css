@@ -193,6 +193,20 @@ html[data-paper="b"] .stamp{color:var(--ink-red);border-color:var(--ink-red);opa
 .pencil::after{content:'';position:absolute;left:-17px;top:0;width:17px;height:15px;border-radius:3px 0 0 3px;
   background:linear-gradient(90deg,#D98D8D 0 58%,#B8BCC2 58% 82%,#9AA0A8 82%)}
 
+/* ---- a signal flow sketch: the AV counterpart to the gel fan ----
+   Decoration only; it sits inside an aria-hidden aside. */
+.sigflow{position:relative;width:176px;margin-left:26px;font-family:var(--mono);transform:rotate(-1.5deg)}
+.sigflow b{display:block;font-size:10px;font-weight:700;letter-spacing:.14em;color:var(--blue);margin-bottom:8px}
+.sigflow i{display:block;position:relative;font-style:normal;font-size:10px;letter-spacing:.07em;
+  color:var(--blue-2);text-align:center;padding:4px 2px;border:1.2px solid var(--blue-55);
+  border-radius:1px;background:var(--mat)}
+.sigflow i+i{margin-top:17px}
+.sigflow i+i::before{content:'';position:absolute;left:50%;top:-17px;width:1.2px;height:12px;
+  transform:translateX(-50%);background:var(--blue-55)}
+.sigflow i+i::after{content:'';position:absolute;left:50%;top:-9px;width:5px;height:5px;
+  transform:translateX(-50%) rotate(45deg);
+  border-right:1.2px solid var(--blue-55);border-bottom:1.2px solid var(--blue-55)}
+
 /* ---- a protractor and a fan of lighting gels ---- */
 .protractor{display:block;width:178px;height:93px;background:url('/img/protractor.svg') center/contain no-repeat;
   filter:drop-shadow(0 5px 5px rgba(60,45,20,.30));transform:rotate(-6deg)}
